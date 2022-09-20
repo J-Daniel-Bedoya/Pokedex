@@ -1,3 +1,4 @@
+/* contenido general de card */
 .container__card{
   width: 100%;
   height: auto;
@@ -8,7 +9,7 @@
   gap: 25px;
   padding-bottom: 9rem;
 }
-
+/* la card que muestra la información de los pokemones */
 .card-pokedex{
   background-color: rgb(105, 55, 243);
   width: 12.2rem;
@@ -23,6 +24,7 @@
 .card-pokedex:hover{
   transform: scale(1.1);
 }
+/* el nomebre de cada pokemon */
 .card__tittle{
   font-size: 17px;
   padding-bottom: 7px;
@@ -30,6 +32,7 @@
   left: 5px;
   color: #fff;
 }
+/* lista de atributos de los pokemones */
 .card__list{
   list-style: none;
   position: relative;

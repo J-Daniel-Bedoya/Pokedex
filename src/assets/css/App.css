@@ -9,9 +9,9 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
-
+/* boton de configuraciones */
 .page__settings{
-  position: absolute;
+  position: fixed;
   right: 2.5rem;
   bottom: 2.5rem;
   display: flex;

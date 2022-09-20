@@ -4,7 +4,7 @@ import '../assets/css/PokedexCard.css'
 const PokedexCard = () => {
   return (
     <div className='container__card'>
-
+      {/* card para mostra la información de los pokemones */}
       <div className='card-pokedex'>
         <h3 className='card__tittle'>Bulbasor</h3>
         <ul className='card__list'>

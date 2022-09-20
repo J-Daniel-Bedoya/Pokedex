@@ -2,15 +2,18 @@
   display: flex;
   justify-content: center;
 }
+/* Container general de main-screen */
 .main-screen{
   width: 70%;
   height: 100vh;
   padding: 4rem 3rem;
 }
+/* titulo */
 .main-screen__tittle{
   padding-bottom: 2rem;
   font-size: 2.5rem;
 }
+/* Input  */
 .main-screen__container--select{
   background-color: #fff;
   margin-top: 7.5rem;
@@ -36,9 +39,9 @@
   background-color: #38ec38;
   border-radius: 10rem;
 }
-
+/* boton para ir al inicio */
 .btn-exit{
-  position: absolute;
+  position: fixed;
   border-radius: 100%;
   padding: 12px;
   font-size: 1.3rem;
