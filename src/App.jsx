@@ -1,8 +1,7 @@
-import React, { useState } from "react"
-import PokedexStart from "./components/PokedexStart"
-import PokedexMainScreen from "./components/PokedexMainScreen"
+import PokedexStart from "./components/PokedexStart/PokedexStart"
+import PokedexMainScreen from "./components/PokedexHome/PokedexMainScreen"
+import PokedexSettings from "./components/PokedexSettings/PokedexSettings"
 import './assets/css/App.css'
-import PokedexSettings from "./components/PokedexSettings"
 
 import {
   HashRouter,

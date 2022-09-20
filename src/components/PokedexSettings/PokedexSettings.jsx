@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import '../assets/css/PokedexSettings.css'
+import '../../assets/css/PokedexSettings.css'
 
 const PokedexSettings = () => {
   const {register, handleSubmit} = useForm()

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/css/PokedexCard.css'
+import '../../assets/css/PokedexCard.css'
 
 const PokedexCard = () => {
   return (
