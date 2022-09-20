@@ -1,0 +1,57 @@
+.PokedexMainScreen{
+  display: flex;
+  justify-content: center;
+}
+.main-screen{
+  width: 70%;
+  height: 100vh;
+  padding: 4rem 3rem;
+}
+.main-screen__tittle{
+  padding-bottom: 2rem;
+  font-size: 2.5rem;
+}
+.main-screen__container--select{
+  background-color: #fff;
+  margin-top: 7.5rem;
+  display: flex;
+  justify-content: center;
+}
+.main-screen__select{
+  width: 46%;
+  height: 3.5rem;
+  border-radius: 4rem;
+  font-size: 18px;
+  padding-left: 1.4rem;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 30px rgb(170, 168, 168);
+}
+.main-screen__select::-webkit-scrollbar{
+  border-radius: 10rem;
+  background-color: rgb(208, 205, 205);
+  width: 10px;
+}
+.main-screen__select::-webkit-scrollbar-thumb{
+  background-color: #38ec38;
+  border-radius: 10rem;
+}
+
+.btn-exit{
+  position: absolute;
+  border-radius: 100%;
+  padding: 12px;
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: #38ec38;
+  top: 6rem;
+  right: 2.5rem;
+  cursor: pointer;
+  border: none;
+}
+.fa-sharp{
+  transition: .3s;
+}
+.fa-sharp:hover{
+  transform: translateX(4px);
+}
