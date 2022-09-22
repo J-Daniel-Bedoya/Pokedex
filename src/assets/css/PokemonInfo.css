@@ -1,0 +1,230 @@
+/* Contenedor general */
+.PokemonInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color-principal);
+}
+/* Información de la página y del pokemon */
+.pokemon{
+  position: relative;
+  width: 70%; 
+}
+/* Logo pokemon */
+.pokemon__logo{
+  position: absolute;
+  width: 17rem;
+  height: 14rem;
+  /* background-color: #00ffff; */
+}
+
+/* primer grupo de cards con información */
+.pokemon__catainer--grup{
+  display: flex;
+  margin-top: 14rem;
+  width: 100%;
+  gap: 1.5rem;
+}
+.pokemon__info{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 44.1rem;
+}
+
+/* info e imagen de la primera card */
+.pokemon__info--principal{
+  background-color: #ffffff;
+  height: 20rem;
+  border-radius: 20px;
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  position: relative;
+}
+.pokemon__img{
+  width: 15rem;
+  height: 14rem;
+  position: absolute;
+  top: -6.5rem;
+  left: 35%;
+}
+.pokemon__container--weight{
+  width: 100%;
+  position: relative;
+  top: 50%;
+  text-align: center;
+  height: 9rem;
+}
+.pokemon__weight, .b1{
+  padding-bottom: 3rem;
+  font-weight: normal;
+  font-size: 15px;
+}
+.height{
+  font-size: 15px;
+}
+.b1, .b2{
+  font-weight: bold;
+  font-size: 20px;
+}
+.pokemon__container--height{
+  width: 100%;
+  position: relative;
+  top: 50%;
+  text-align: center;
+  height: 9rem;
+}
+.pokemon__info-principal--barra{
+  height: 1.5px;
+  border: none;
+  background-color: #c1bebe;
+}
+.pokemon__container--name{
+  position: absolute;
+  bottom: 1.8rem;
+  left: 42%;
+  font-size: 12px;
+  background-color: #ffffff;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+.pokemon__name{
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 0 3px 7px #737272;
+}
+.pokemon__id{
+  width: 100%;
+  font-weight: bold;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.p{
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid #000;
+}
+
+/* info de la segunda y tercera card */
+.pokemon__type--abilities{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1.5rem;
+}
+/* información de la segunda card */
+.pokemon__type{
+  background-color: #ffffff;
+  width: 50%;
+  height: 11rem;
+  border-radius: 20px;
+  position: relative;
+  padding: 1rem;
+}
+.pokemon__barra--type{
+  position: relative;
+  top: 2rem;
+  height: 1.5px;
+  border: none;
+  background-color: #c1bebe;
+}
+.pokemon__type--tittle{
+  position: absolute;
+  top: 1.8rem;
+  left: 37%;
+  font-weight: bold;
+  padding: 0 20px;
+  background-color: #ffffff;
+  font-size: 1.5rem;
+}
+.pokemon__type--container-description{
+  position: relative;
+  top: 5rem;
+  height: 2.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.pokemon__type--text{
+  background-color: #737272;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+/* información de la tercera card */
+.pokemon__abilities{
+  background-color: #ffffff;
+  width: 50%;
+  height: 9rem;
+  border-radius: 20px;
+  position: relative;
+  padding: 1rem;
+}
+.pokemon__barra--abilities{
+  position: relative;
+  top: 2rem;
+  height: 1.5px;
+  border: none;
+  background-color: #c1bebe;
+}
+.pokemon__abilities--tittle{
+  position: absolute;
+  top: 1.8rem;
+  left: 30%;
+  font-weight: bold;
+  padding: 0 20px;
+  background-color: #ffffff;
+  font-size: 1.5rem;
+}
+.pokemon__abilities--cotainer-description{
+  position: relative;
+  top: 4rem;
+  height: 2.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.pokemon__abilities--text{
+  background-color: #73727200;
+  box-shadow: 0 0 1.5px rgb(88, 88, 88);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+
+/* información de la cuarta card */
+.pokemon__stats{
+  height: 20rem;
+  background-color: blueviolet;
+  border-radius: 20px;
+}
+/* segundo grupo de cards con información */
+.pokemon__info--secundaria{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.pokemon__encounters{
+  background-color: rgb(217, 147, 17);
+  height: 2rem;
+  border-radius: 20px;
+}
+.pokemon__movements{
+  /* grid-area: movements; */
+  background-color: rgb(168, 226, 43);
+  height: 20rem;
+  width: 15rem;
+  height: 115rem;
+  border-radius: 20px;
+}

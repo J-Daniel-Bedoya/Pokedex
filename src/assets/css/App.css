@@ -9,6 +9,21 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
+:root{
+  --bg-color-principal: #efe9e9;
+  --color-principal: #000;
+  --shadow-principal: #aeadad;
+  --shadow-second: #888787;
+}
+.change-color {
+  --bg-color-principal: #1b1a1a;
+  --color-principal: #fff;
+  --shadow-principal: #6b6a6a;
+  --shadow-second: #9e9c9c;
+}
+.f{
+  background-color: #959494;
+}
 /* boton de configuraciones */
 .page__settings{
   position: fixed;

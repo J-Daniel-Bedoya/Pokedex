@@ -2,12 +2,22 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import PokedexCard from './PokedexCard';
+import { useSelector } from 'react-redux';
 import '../../assets/css/PokedexMainScreen.css'
 
 const PokedexMainScreen = () => {
   const {register, handleSubmit, reset} = useForm()
   const navigate = useNavigate()
   const {name} = useParams()
+
+  const colorChange = useSelector(state => state.colorChange)
+  const infoPokemon = () => {
+    const infoPokemon1 = useSelector(store => store.infoPokemon)
+    return (
+      <div>{infoPokemon1}</div>
+    )
+  }
+
   // funcion para ir hacia salir de la sección
   const goBack = () => {
     navigate("/")
@@ -21,7 +31,7 @@ const PokedexMainScreen = () => {
   }
   return (
     // contenedor general de main screen
-    <div className='PokedexMainScreen'>
+    <div className={`PokedexMainScreen ${colorChange ? "change-color" : ""}`}>
       <div className='main-screen'>
         {/* header */}
         <h1 className='main-screen__tittle'>Pokedex</h1>
@@ -30,9 +40,8 @@ const PokedexMainScreen = () => {
         <div className='main-screen__cantainer--type-pokemon'>
           <div className='type-pokemon__catainer'>
             <h5 className='type-pokemon__type'>type</h5>
-              <div className='type-pokemon__barra'>
-                <div className='type-pokemon__circle'></div>
-              </div>
+            <input id="cheked" type="checkbox" />
+            <label htmlFor="cheked" id='circle'><div></div></label>
             <h5 className='type-pokemon__pokemon'>pokemon</h5>
           </div>
         </div>
@@ -66,7 +75,11 @@ const PokedexMainScreen = () => {
           </div>
         </form>
         {/* boton para ir hacia atras */}
-        <button onClick={goBack} className='btn-exit'><i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button 
+          onClick={goBack} 
+          className='btn-exit'>
+          <i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
         {/* componente de cards */}
         <PokedexCard />
         {/* boton para ir a la ventana de configuraciones */}

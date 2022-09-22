@@ -1,12 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux';
+import { color } from '../store/slices/Color.slice';
 import '../../assets/css/PokedexSettings.css'
 
 const PokedexSettings = () => {
   const {register, handleSubmit} = useForm()
   const navigate = useNavigate()
 
+  const colorChange = useSelector(state => state.colorChange)
+  const dispatch = useDispatch()
   const submit = () =>{
     
   }
@@ -14,9 +18,10 @@ const PokedexSettings = () => {
   const settings = () => {
     navigate(-1)
   }
+
   return (
     // contenido general de la ventana de configuraciones
-    <div className='PokedexSettings'>
+    <div className={`PokedexSettings ${colorChange ? "change-color" : ""}`}>
       <div className='settings__container'>
         <h1 className='settings__tittle'>Settings</h1>
         {/* conguración del color de la página */}
@@ -25,9 +30,8 @@ const PokedexSettings = () => {
           <div className='theme__cotainer'>
             <div className='theme__light-dark'>
               <h4 className='theme__light'>Light</h4>
-              <div className="theme__barra">
-                <div className='theme__circle'></div>
-              </div>
+              <input id="cheked" type="checkbox" />
+              <label onClick={() => dispatch(color())} htmlFor="cheked" id='circle'><div></div></label>
               <h4 className='theme__dark'>Dark</h4>
             </div>
           </div>

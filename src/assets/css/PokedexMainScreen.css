@@ -1,6 +1,8 @@
 .PokedexMainScreen{
   display: flex;
   justify-content: center;
+  background-color: var(--bg-color-principal);
+  color: var(--color-principal);
 }
 /* Container general de main-screen */
 .main-screen{
@@ -15,7 +17,6 @@
 }
 /* Input  */
 .main-screen__container--select{
-  background-color: #fff;
   margin-top: 7.5rem;
   display: flex;
   justify-content: center;
@@ -28,7 +29,7 @@
   padding-left: 1.4rem;
   border: none;
   outline: none;
-  box-shadow: 0 0 30px rgb(170, 168, 168);
+  box-shadow: 0 0 20px var(--shadow-principal);
 }
 .main-screen__select::-webkit-scrollbar{
   border-radius: 10rem;
@@ -52,9 +53,69 @@
   cursor: pointer;
   border: none;
 }
-.fa-sharp{
-  transition: .3s;
-}
+
 .fa-sharp:hover{
-  transform: translateX(4px);
+  animation: translateYExit .7s infinite;
+}
+
+/* Tipo de búsqueda */
+.main-screen__cantainer--type-pokemon{
+  width: fit-content;
+  height: 3rem;
+  position: absolute;
+  top: 12rem;
+  left: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.type-pokemon__catainer{
+  display: flex;
+  gap: 10px;
+}
+input[type=checkbox] {
+  position: absolute;
+  left: 10px;
+  display: none;
+}
+.type-pokemon__catainer input[type=checkbox] + label{
+  width: 4.5rem;
+  height: 1.5rem;
+  background-color: #f00068;
+  border-radius: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 1s;
+}
+.type-pokemon__catainer input[type=checkbox]:checked + label{
+  background-color: #22f93f;
+}
+.main-screen__cantainer--type-pokemon .type-pokemon__catainer label::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(217, 217, 217);
+  display: inline-block;
+  border-radius: 100%;
+  position: absolute;
+  top: -3px;
+  left: 0;
+  transition: left .5s;
+}
+.main-screen__cantainer--type-pokemon input[type=checkbox]:checked + label::before{
+  position: absolute;
+  left: 56%;
+}
+
+
+@keyframes translateYExit {
+  0% {
+    transform: translatex(0);
+  }
+  50% {
+    transform: translatex(4px);
+  }
+  0% {
+    transform: translatex(0);
+  }
 }

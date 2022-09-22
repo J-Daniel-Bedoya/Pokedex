@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import '../../assets/css/PokedexStart.css'
 
 
@@ -12,13 +13,14 @@ const PokedexStart = () => {
   const submit = (form) => {
     navigate(`/home/${form.name}`)
   } 
+  const colorChange = useSelector(state => state.colorChange)
   // funcion para abrir la ventana de configuraciones
   const settings = () => {
     navigate("/settings")
   }
   return (
 
-    <div className='container__page'>
+    <div className={`container__page ${colorChange ? "change-color" : ""}`}>
       <div className='page__content-image'>
         {/* header */}
         <h1 className='page__tittle'>Hello trainer!</h1>
