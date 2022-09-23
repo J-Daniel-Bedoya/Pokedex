@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   background-color: var(--bg-color-principal);
+  background-color: aqua;
 }
 /* Información de la página y del pokemon */
 .pokemon{
@@ -14,9 +15,12 @@
 /* Logo pokemon */
 .pokemon__logo{
   position: absolute;
-  width: 17rem;
+  width: 15.5rem;
   height: 14rem;
-  /* background-color: #00ffff; */
+  background-image: url('../img/International_Pokémon_logo.svg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 /* primer grupo de cards con información */
@@ -44,11 +48,11 @@
   position: relative;
 }
 .pokemon__img{
-  width: 15rem;
-  height: 14rem;
+  width: 21rem;
+  height: 23rem;
   position: absolute;
-  top: -6.5rem;
-  left: 35%;
+  top: -9.5rem;
+  left: 26%;
 }
 .pokemon__container--weight{
   width: 100%;
@@ -180,7 +184,7 @@
   left: 30%;
   font-weight: bold;
   padding: 0 20px;
-  background-color: #ffffff;
+  background-color: #ffffff; 
   font-size: 1.5rem;
 }
 .pokemon__abilities--cotainer-description{
@@ -206,9 +210,101 @@
 /* información de la cuarta card */
 .pokemon__stats{
   height: 20rem;
-  background-color: blueviolet;
+  background-color: #ffffff;
   border-radius: 20px;
+  position: relative;
+  padding: 1rem;
 }
+.pokemon__stats--barra{
+  margin-top: 2.5rem;
+  border: none;
+  height: 1.5px;
+  background-color: #000;
+}
+.pokemon__stats--tittle{
+  position: absolute;
+  left: 40%;
+  top: 1.5rem;
+  padding: 5px 15px;
+  background-color: #ffffff;
+}
+.pokemon__stats--container{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+.pokemon__stats--cotainer-statistics{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.8rem;
+  margin-top: 1.5rem;
+}
+.pokemon__stats--statistics{
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.pokemon__statistics--text{
+  background-color: #c4c1c1;
+  padding: 3px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #454343;
+
+}
+.pokemon__div--barra{
+  width: 70%;
+  background-color: #d2d1d1;
+  border-radius: 5px;
+}
+.pokemon__font-barra{
+  width: 90%;
+  height: 25px;
+  background-color: #eb5510e0;
+  border-radius: 5px 20px 20px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 10px 0 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  color: #efebeb;
+  position: relative;
+}
+.pokemon__animation--barras {
+  width: 80%;
+  height: 100%;
+  /* animation: colorAnimation 1s infinite; */
+}
+.pokemon__animation--barras::after{
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  animation: colorAnimation 2s ease infinite;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: colorAnimation;
+}
+
 /* segundo grupo de cards con información */
 .pokemon__info--secundaria{
   display: flex;
@@ -227,4 +323,20 @@
   width: 15rem;
   height: 115rem;
   border-radius: 20px;
+}
+
+@keyframes colorAnimation {
+  0%{
+    transform: translateX(0);
+    /* background-color: #efebeb68; */
+  }
+  50%{
+    transform: translateX(100%);
+    /* background-color: #efebeb68; */
+    /* opacity: 1px; */
+  }
+  100%{
+    transform: translateX(0);
+    /* background-color: #efebeb68; */
+  }
 }

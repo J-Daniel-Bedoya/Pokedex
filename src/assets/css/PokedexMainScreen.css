@@ -1,13 +1,14 @@
 .PokedexMainScreen{
+  width: 100%;
   display: flex;
   justify-content: center;
   background-color: var(--bg-color-principal);
   color: var(--color-principal);
 }
+
 /* Container general de main-screen */
 .main-screen{
-  width: 70%;
-  height: 100vh;
+  width: 75%;
   padding: 4rem 3rem;
 }
 /* titulo */
@@ -29,7 +30,9 @@
   padding-left: 1.4rem;
   border: none;
   outline: none;
-  box-shadow: 0 0 20px var(--shadow-principal);
+  background-color: var(--bg-inputs);
+  box-shadow: 0 0 10px var(--shadow-second);
+  color: var(--color-principal);
 }
 .main-screen__select::-webkit-scrollbar{
   border-radius: 10rem;
@@ -47,7 +50,7 @@
   padding: 12px;
   font-size: 1.3rem;
   color: #fff;
-  background-color: #38ec38;
+  background-color: #ec3847;
   top: 6rem;
   right: 2.5rem;
   cursor: pointer;
@@ -64,7 +67,7 @@
   height: 3rem;
   position: absolute;
   top: 12rem;
-  left: 45%;
+  left: 44.8%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,20 +84,20 @@ input[type=checkbox] {
 .type-pokemon__catainer input[type=checkbox] + label{
   width: 4.5rem;
   height: 1.5rem;
-  background-color: #f00068;
+  background-color: #fa311e;
   border-radius: 1rem;
   position: relative;
   cursor: pointer;
   transition: background-color 1s;
 }
 .type-pokemon__catainer input[type=checkbox]:checked + label{
-  background-color: #22f93f;
+  background-color: #03ac1a;
 }
 .main-screen__cantainer--type-pokemon .type-pokemon__catainer label::before {
   content: "";
   width: 2rem;
   height: 2rem;
-  background-color: rgb(217, 217, 217);
+  background-color: #d9d9d9;
   display: inline-block;
   border-radius: 100%;
   position: absolute;
@@ -107,6 +110,60 @@ input[type=checkbox] {
   left: 56%;
 }
 
+/* inptu para copiar el nombre del pokemon */
+
+.namePokemon-label{
+  padding: 1.2rem 1.75rem;
+  border-radius: 100%;
+  background-color: #ec3847;
+  position: relative;
+  top: .3px;
+  left: 14%;
+  background-image: url('../img//lupa.png');
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  transition: 1s;
+  z-index: 10;
+}
+.namePokemon-input{
+  width: 3.5rem;
+  height: 3.5rem;
+  transition: 1s;
+  border-radius: 100%;
+  border: 1px solid #000;
+  outline: none;
+  color: transparent;
+  position: relative;
+  right: 1.5rem;
+  z-index: 1;
+}
+.namePokemon-input:focus{
+  width: 20rem;
+  height: 3rem;
+  border-radius: 10rem;
+  background-color: #95ef95;
+  background-size: 8%;
+  background-position: right;
+  padding-left: 1.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  /* position: relative; */
+  /* transition: 1s; */
+}
+.encogido{
+  width: 3.5rem;
+  height: 3.5rem;
+  transition: 1s;
+  border-radius: 100%;
+  border: 1px solid #000;
+  outline: none;
+  color: transparent;
+  position: relative;
+  left: 30%;
+  z-index: 1;
+}
 
 @keyframes translateYExit {
   0% {

@@ -9,7 +9,7 @@ const PokedexStart = () => {
 
   const {register, handleSubmit, reset} = useForm()
   const navigate = useNavigate()
-  // funcion para agregar la información del formulario
+  // funcion para agregar la información del formulario 
   const submit = (form) => {
     navigate(`/home/${form.name}`)
   } 

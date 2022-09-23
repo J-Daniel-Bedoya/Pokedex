@@ -41,22 +41,25 @@ img{
   padding: .9rem;
   border-radius: 2rem;
   border: none;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px #434242;
+  background-color: var(--color-cards);
+  box-shadow: 0 0 10px var(--shadow-second);
+  color: var(--color-inputs-text);
+  font-size: 19px;
   outline: none;
+  font-weight: bold;
 }
 
 .page__form--input:focus{
-  border: 2px solid rgba(13, 204, 105, 0.804);
+  border: 2px solid var(--change-color-border-btn);
 }
 .btn-submit{
-  font-size: 3rem;
+  font-size: 3.7rem;
   position: relative;
-  left: 21.7%;
-  bottom: 4.02rem;
-  color: #06c46b;
+  left: 20.9%;
+  bottom: 4.7rem;
+  color: var(--change-color-btn);
   background-color: transparent;
   border: none;
-  cursor: pointer;
+  cursor: pointer; 
 }
 

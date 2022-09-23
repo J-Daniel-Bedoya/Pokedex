@@ -22,7 +22,6 @@ function App() {
           <Route path="/home/:name" element={<PokedexMainScreen />} />
           <Route path="/settings" element={<PokedexSettings />} />
           <Route path="/home/:name/info_pokemon/:id" element={<PokemonInfo />}/>
-          {/* <Route path="/home/:name/info_pokemon/:name" element={<PokemonInfo />}/> */}
         </Routes>
       </HashRouter>
     </div>

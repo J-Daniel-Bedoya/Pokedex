@@ -1,40 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 import '../../assets/css/PokedexCard.css'
 
-const PokedexCard = () => {
+const PokedexCard = ({url}) => {
+  // const [pokemon1, setPokemon1] = useState([])
+  const [pokemon, setPokemon] = useState({})
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const pokemonInfo = () => {
-    navigate("/home/:name/info_pokemon/pokemon")
+  // https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1155
+  
+  useEffect(() => {
+    axios.get(url)
+    .then(res => {
+      setPokemon(res.data)
+      console.log(res.data)
+    })
+  }, [url])
+  const pokemonInfo = (id) => {
+    navigate(`/home/:name/info_pokemon/${id}`)
   } 
 
   return (
-    <div className='container__card'>
+    <>
       {/* card para mostra la información de los pokemones */}
-      <div className='card-pokedex' onClick={pokemonInfo}>
-        <h3 className='card__tittle'>Bulbasor</h3>
+      <div className='card-pokedex' onClick={() => pokemonInfo(pokemon.id)}>
+        <h3 className='card__tittle'>{pokemon?.name}</h3>
         <ul className='card__list'>
           <div className='card__container--list'>
-            <li className='card__list--li card__list--type'><b>Types:</b> waiter</li>
+            <li 
+              className='card__list--li card__list--type'>
+              <b>Types:</b> {pokemon.types?.map(e => (
+                <p className='p-type' key={e.type.url}>{e.type.name},</p>
+              ))}
+            </li>
           </div>
           <div className='card__container--list'>
-            <li className='card__list--li card__list--hp'><b>hp:</b> 79</li>
+            <li className='card__list--li card__list--hp'>
+              <b>hp:</b> {pokemon.stats?.[0].base_stat}</li>
           </div>
           <div className='card__container--list'>
-            <li className='card__list--li card__list--attack'><b>attack:</b> 85</li>
+            <li className='card__list--li card__list--attack'><b>attack:</b> {pokemon.stats?.[1].base_stat}</li>
           </div>
           <div className='card__container--list'>
-            <li className='card__list--li card__list--defense'><b>defense:</b> 100</li>
+            <li className='card__list--li card__list--defense'><b>defense:</b> {pokemon.stats?.[2].base_stat}</li>
           </div>
           <div className='card__container--list'>
-            <li className='card__list--li card__list--speed'><b>speed:</b> 89</li>
+            <li className='card__list--li card__list--speed'><b>speed:</b> {pokemon.stats?.[5].base_stat}</li>
+          </div>
+          <div className='pokemon__container--img'>
+            <img id='pokemon__img' 
+              src={pokemon.sprites?.other["dream_world"].front_default} alt={pokemon.name}/>
           </div>
         </ul>
       </div>
       
 
       
-    </div>
+    </>
   );
 };
 

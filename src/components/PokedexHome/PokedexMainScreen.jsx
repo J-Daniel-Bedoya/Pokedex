@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import PokedexCard from './PokedexCard';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 import '../../assets/css/PokedexMainScreen.css'
+import '../../assets/css/PokedexCard.css'
 
 const PokedexMainScreen = () => {
+
+  const [typeInput, setTypeInput] = useState(false)
+  const [stateInput, setStateInput] = useState(false)
+  const [pokemon, setPokemon] = useState([])
+  const colorChange = useSelector(state => state.colorChange)
   const {register, handleSubmit, reset} = useForm()
   const navigate = useNavigate()
   const {name} = useParams()
 
-  const colorChange = useSelector(state => state.colorChange)
   const infoPokemon = () => {
     const infoPokemon1 = useSelector(store => store.infoPokemon)
     return (
@@ -29,26 +35,29 @@ const PokedexMainScreen = () => {
   const settings = () => {
     navigate("/settings")
   }
-  return (
-    // contenedor general de main screen
-    <div className={`PokedexMainScreen ${colorChange ? "change-color" : ""}`}>
-      <div className='main-screen'>
-        {/* header */}
-        <h1 className='main-screen__tittle'>Pokedex</h1>
-        <p className='main-screen__text'>Welcome {name}, here you can find your favorite pokemon</p>
-        {/* configuración para cambiar el tipo de búsqueda */}
-        <div className='main-screen__cantainer--type-pokemon'>
-          <div className='type-pokemon__catainer'>
-            <h5 className='type-pokemon__type'>type</h5>
-            <input id="cheked" type="checkbox" />
-            <label htmlFor="cheked" id='circle'><div></div></label>
-            <h5 className='type-pokemon__pokemon'>pokemon</h5>
-          </div>
+  useEffect(() => {
+    axios.get('https://pokeapi.co/api/v2/pokemon')
+    .then(res => {
+      setPokemon(res.data.results)
+      // console.log(res.data.results)
+    })
+  }, [])
+
+  const typeOfInput = () => {
+    if (typeInput) {
+      return (
+        <div className='main-screen__text-pokemon'>
+          <label 
+            htmlFor="namePokemon" 
+            className={stateInput ? "encogido" : "namePokemon-label"} 
+            onClick={() => setStateInput(!stateInput)}>
+          </label>
+          <input  id='namePokemon' className='namePokemon-input' type="text"/>
         </div>
-        {/* input de tipo selector para seleccionar el tipo de pokemon */}
-        <form onSubmit={handleSubmit(submit)} className="main-screen__form">
-          <div className='main-screen__container--select'>
-            <select name="" id="" className='main-screen__select'>
+      )
+    }else{
+      return (
+        <select name="" id="" className='main-screen__select'>
               <option value="">All Pokemons</option>
               <option value="">Normal</option>
               <option value="">fighting</option>
@@ -71,7 +80,29 @@ const PokedexMainScreen = () => {
               <option value="">unknown</option>
               <option value="">shadow</option>
             </select>
-
+      )
+    }
+  }
+  return (
+    // contenedor general de main screen
+    <div className={`PokedexMainScreen ${colorChange ? "change-color" : ""}`}>
+      <div className='main-screen'>
+        {/* header */}
+        <h1 className='main-screen__tittle'>Pokedex</h1>
+        <p className='main-screen__text'>Welcome {name}, here you can find your favorite pokemon</p>
+        {/* configuración para cambiar el tipo de búsqueda */}
+        <div className='main-screen__cantainer--type-pokemon'>
+          <div className='type-pokemon__catainer'>
+            <h5 className='type-pokemon__type'>type</h5>
+            <input id="cheked" type="checkbox" />
+            <label htmlFor="cheked" id='circle' onClick={() => setTypeInput(!typeInput)}><div></div></label>
+            <h5 className='type-pokemon__pokemon'>pokemon</h5>
+          </div>
+        </div>
+        {/* input de tipo selector para seleccionar el tipo de pokemon */}
+        <form onSubmit={handleSubmit(submit)} className="main-screen__form">
+          <div className='main-screen__container--select'>
+            {typeOfInput()}
           </div>
         </form>
         {/* boton para ir hacia atras */}
@@ -80,8 +111,14 @@ const PokedexMainScreen = () => {
           className='btn-exit'>
           <i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
         </button>
+        <div className='container__card'> 
         {/* componente de cards */}
-        <PokedexCard />
+          {
+            pokemon.map(e => (
+              <PokedexCard url={e.url} key={e.name} />
+              ))
+          }
+        </div>
         {/* boton para ir a la ventana de configuraciones */}
         <div className='page__settings' onClick={settings}>
           <i className="fa-solid fa-gear page__settings--icon"></i>

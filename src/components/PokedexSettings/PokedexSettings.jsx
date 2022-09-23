@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
-import { color } from '../store/slices/Color.slice';
+import { color } from '../../store/slices/Color.slice'; 
 import '../../assets/css/PokedexSettings.css'
 
 const PokedexSettings = () => {
@@ -37,10 +37,10 @@ const PokedexSettings = () => {
           </div>
         </div>
         {/* configuración de todas las car que se pueden mostrar en la página */}
-        <div className='items-page'>
+        <div className={`items-page `}>
           <p className='items-page__tittle'>Items per page</p>
           <form onSubmit={handleSubmit(submit)} className="items-page__form">
-            <select name="" id="" className='items-page__select'>
+            <select name="" id="" className={`items-page__select`}>
               <option value="">4 items</option>
               <option value="">8 items</option>
               <option value="">12 items</option>

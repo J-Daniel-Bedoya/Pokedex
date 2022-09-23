@@ -10,16 +10,28 @@ body{
 }
 
 :root{
-  --bg-color-principal: #efe9e9;
+  --bg-color-principal: #fdfdfd;
   --color-principal: #000;
   --shadow-principal: #aeadad;
   --shadow-second: #888787;
+  --color-cards: #fff;
+  --bg-inputs: #fff;
+  --color-inputs-text: #410cde;
+  --change-color-btn: #3b19e3;
+  --change-color-border-btn: #6118e0cd;
+  --change-color-bg-btn: #25f2bf;
 }
 .change-color {
-  --bg-color-principal: #1b1a1a;
+  --bg-color-principal: #1d1b1b;
   --color-principal: #fff;
   --shadow-principal: #6b6a6a;
-  --shadow-second: #9e9c9c;
+  --shadow-second: #333131;
+  --color-cards: #111111;
+  --bg-inputs: #000;
+  --color-inputs-text: #25f2bf;
+  --change-color-btn: #06c46b;
+  --change-color-border-btn: #0dcc69cd;
+  --change-color-bg-btn: #410cde;
 }
 .f{
   background-color: #959494;
@@ -32,7 +44,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(32, 13, 180);
+  background-color: var(--change-color-bg-btn);
   border-radius: 100%;
   color: #ffffff;
   cursor: pointer;
@@ -45,4 +57,15 @@ body{
 }
 .page__settings--icon:hover{
   transform: rotate(-360deg);
+}
+
+body::-webkit-scrollbar {
+  width: .5rem;
+  background-color: rgb(219, 219, 216);
+  border: 1px solid rgb(73, 73, 73);
+}
+body::-webkit-scrollbar-thumb {
+  width: 100%;
+  border-radius: 20px;
+  background-color: rgb(135, 135, 133);
 }
