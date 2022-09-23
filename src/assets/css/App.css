@@ -20,6 +20,8 @@ body{
   --change-color-btn: #3b19e3;
   --change-color-border-btn: #6118e0cd;
   --change-color-bg-btn: #25f2bf;
+  --input-color-search: #50da50;
+  --input-color-search-focus: #bef9be;
 }
 .change-color {
   --bg-color-principal: #1d1b1b;
@@ -32,6 +34,8 @@ body{
   --change-color-btn: #06c46b;
   --change-color-border-btn: #0dcc69cd;
   --change-color-bg-btn: #410cde;
+  --input-color-search: #4d17e2;
+  --input-color-search-focus: #936dfa;
 }
 .f{
   background-color: #959494;

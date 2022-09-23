@@ -5,21 +5,19 @@ import axios from 'axios';
 import '../../assets/css/PokedexCard.css'
 
 const PokedexCard = ({url}) => {
-  // const [pokemon1, setPokemon1] = useState([])
+
   const [pokemon, setPokemon] = useState({})
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  // https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1155
   
   useEffect(() => {
     axios.get(url)
     .then(res => {
       setPokemon(res.data)
-      console.log(res.data)
-    })
+    }) 
   }, [url])
   const pokemonInfo = (id) => {
-    navigate(`/home/:name/info_pokemon/${id}`)
+    navigate(`/pokedex/info_pokemon/${id}`)
   } 
 
   return (

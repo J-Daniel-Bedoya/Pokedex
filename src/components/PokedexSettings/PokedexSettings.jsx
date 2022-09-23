@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { color } from '../../store/slices/Color.slice'; 
+import { postPerPage } from '../../store/slices/postPerPage.slice';
 import '../../assets/css/PokedexSettings.css'
 
 const PokedexSettings = () => {
-  const {register, handleSubmit} = useForm()
   const navigate = useNavigate()
 
   const colorChange = useSelector(state => state.colorChange)
   const dispatch = useDispatch()
-  const submit = () =>{
-    
+  const submit = (form) =>{
+    dispatch(postPerPage(form))
   }
   // funcion para ir hacia atra en las paginas
   const settings = () => {
@@ -39,13 +38,14 @@ const PokedexSettings = () => {
         {/* configuración de todas las car que se pueden mostrar en la página */}
         <div className={`items-page `}>
           <p className='items-page__tittle'>Items per page</p>
-          <form onSubmit={handleSubmit(submit)} className="items-page__form">
-            <select name="" id="" className={`items-page__select`}>
-              <option value="">4 items</option>
-              <option value="">8 items</option>
-              <option value="">12 items</option>
-              <option value="">16 items</option>
-              <option value="">20 items</option>
+          <form onSubmit={submit} className="items-page__form">
+            <select name="" id="" className={`items-page__select`} onChange={e => submit(e.target.value)}>
+              <option value="">Selecionar tamaño</option>
+              <option value="4">4 items</option>
+              <option value="8">8 items</option>
+              <option value="12">12 items</option>
+              <option value="16">16 items</option>
+              <option value="20">20 items</option>
             </select>
           </form>
         </div>

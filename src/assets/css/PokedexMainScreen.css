@@ -10,20 +10,26 @@
 .main-screen{
   width: 75%;
   padding: 4rem 3rem;
-}
+} 
 /* titulo */
 .main-screen__tittle{
   padding-bottom: 2rem;
   font-size: 2.5rem;
 }
-/* Input  */
+/* Inputs  */
 .main-screen__container--select{
-  margin-top: 7.5rem;
+  margin-top: 7rem;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 22rem;
+  height: 5rem;
+  left: 30%;
 }
+/* input select */
 .main-screen__select{
-  width: 46%;
+  width: 100%;
   height: 3.5rem;
   border-radius: 4rem;
   font-size: 18px;
@@ -33,6 +39,7 @@
   background-color: var(--bg-inputs);
   box-shadow: 0 0 10px var(--shadow-second);
   color: var(--color-principal);
+  transition: 1s;
 }
 .main-screen__select::-webkit-scrollbar{
   border-radius: 10rem;
@@ -43,6 +50,76 @@
   background-color: #38ec38;
   border-radius: 10rem;
 }
+/* input text */
+
+.namePokemon-input{
+  width: 3.5rem;
+  height: 3.5rem;
+  transition: 1s;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  color: transparent;
+  position: relative;
+  left: 20%; 
+  z-index: 2;
+}
+.shrunken{
+  width: 20rem;
+  height: 2.9rem;
+  border-radius: 10rem;
+  background-color: var(--input-color-search);
+  background-size: 8%;
+  background-position: right;
+  padding-left: 1.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000; 
+  position: relative; 
+  transition: 1s;
+  border: none;  
+  outline: none;
+}
+.btn__pokemon--search1{
+  z-index: 5;
+  position: absolute;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 100%;
+  background-image: url('../img/lupa.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px; 
+  right: 8.6rem;
+  transition: .35s;
+  border: none;
+  cursor: pointer;
+}
+.btn__pokemon--search2{
+  z-index: 5;
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  background-image: url('../img/lupa.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px; 
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  transition: .7s;
+  cursor: pointer;
+}
+
+.namePokemon-input:focus{
+  border: none;
+  background-color: var(--input-color-search-focus);
+} 
+.encogido:focus{
+  border: none;
+}
+
 /* boton para ir al inicio */
 .btn-exit{
   position: fixed;
@@ -112,58 +189,16 @@ input[type=checkbox] {
 
 /* inptu para copiar el nombre del pokemon */
 
-.namePokemon-label{
-  padding: 1.2rem 1.75rem;
-  border-radius: 100%;
-  background-color: #ec3847;
-  position: relative;
-  top: .3px;
-  left: 14%;
-  background-image: url('../img//lupa.png');
-  background-repeat: no-repeat;
-  background-size: 50%;
-  background-position: center;
-  transition: 1s;
-  z-index: 10;
+
+
+.pagination{
+  /* background-color: #03ac1a;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
 }
-.namePokemon-input{
-  width: 3.5rem;
-  height: 3.5rem;
-  transition: 1s;
-  border-radius: 100%;
-  border: 1px solid #000;
-  outline: none;
-  color: transparent;
-  position: relative;
-  right: 1.5rem;
-  z-index: 1;
-}
-.namePokemon-input:focus{
-  width: 20rem;
-  height: 3rem;
-  border-radius: 10rem;
-  background-color: #95ef95;
-  background-size: 8%;
-  background-position: right;
-  padding-left: 1.5rem;
-  font-size: 20px;
-  font-weight: bold;
-  color: #000;
-  /* position: relative; */
-  /* transition: 1s; */
-}
-.encogido{
-  width: 3.5rem;
-  height: 3.5rem;
-  transition: 1s;
-  border-radius: 100%;
-  border: 1px solid #000;
-  outline: none;
-  color: transparent;
-  position: relative;
-  left: 30%;
-  z-index: 1;
-}
+
 
 @keyframes translateYExit {
   0% {

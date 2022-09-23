@@ -11,7 +11,7 @@ const PokedexStart = () => {
   const navigate = useNavigate()
   // funcion para agregar la información del formulario 
   const submit = (form) => {
-    navigate(`/home/${form.name}`)
+    navigate(`/pokedex/${form.name}`)
   } 
   const colorChange = useSelector(state => state.colorChange)
   // funcion para abrir la ventana de configuraciones

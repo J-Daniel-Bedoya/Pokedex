@@ -15,19 +15,21 @@ const PokemonInfo = () => {
   }
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    .then(res => setPokemon(res.data))
+    .then(res => {
+      setPokemon(res.data)
+    })
   }, [id])
 
   return (
     // contenedor general
-    <div className='PokemonInfo'>
+    <div className='PokemonInfo' >
       <div className='pokemon'>
         {/* <img className='pokemon__logo' src="../../assets/img/International_Pokémon_logo.svg.png" alt="" /> */}
         <div className='pokemon__logo'></div>
-        <div className='pokemon__catainer--grup'>
-          <div className='pokemon__info'>
+        <div className='pokemon__catainer--grup' key={pokemon.name}>
+          <div className='pokemon__info' >
             {/* información principal - primera card */}
-            <div className='pokemon__info--principal'>
+            <div className='pokemon__info--principal' >
               <img className='pokemon__img' src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
               <div className='pokemon__container--weight'>
                 <b className='b1'>{pokemon.height}</b>
@@ -40,7 +42,7 @@ const PokemonInfo = () => {
                 <hr className='pokemon__info-principal--barra'/>
               </div>
               <div className='pokemon__container--name'>
-                <p className='pokemon__name'>name</p>
+                <p className='pokemon__name'>{pokemon.name}</p>
                 <div className='pokemon__id'><p className='p'># {pokemon.id}</p></div>
               </div>
             </div>

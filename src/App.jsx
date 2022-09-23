@@ -19,9 +19,9 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<PokedexStart />} />
-          <Route path="/home/:name" element={<PokedexMainScreen />} />
+          <Route path="/pokedex/:name" element={<PokedexMainScreen />} />
           <Route path="/settings" element={<PokedexSettings />} />
-          <Route path="/home/:name/info_pokemon/:id" element={<PokemonInfo />}/>
+          <Route path="/pokedex/info_pokemon/:id" element={<PokemonInfo />}/>
         </Routes>
       </HashRouter>
     </div>

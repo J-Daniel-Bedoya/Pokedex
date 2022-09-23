@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import PokedexCard from './PokedexCard';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { currentPage } from '../../store/slices/currentPage.slice';
+import PaginationPokemon from './PaginationPokemon';
 import '../../assets/css/PokedexMainScreen.css'
 import '../../assets/css/PokedexCard.css'
 
 const PokedexMainScreen = () => {
 
-  const [typeInput, setTypeInput] = useState(false)
-  const [stateInput, setStateInput] = useState(false)
-  const [pokemon, setPokemon] = useState([])
-  const colorChange = useSelector(state => state.colorChange)
   const {register, handleSubmit, reset} = useForm()
   const navigate = useNavigate()
   const {name} = useParams()
+  const colorChange = useSelector(state => state.colorChange)
+  const currentPageSelect = useSelector(state => state.currentPage)
+  const postPerPageSelect = useSelector(state => state.postPerPage)
+  const dispatch = useDispatch()
+
+  const [typeInput, setTypeInput] = useState(false)
+  const [stateInput, setStateInput] = useState(false)
+  const [selectCategory, setSelectCategory] = useState(false)
+  const [pokemon, setPokemon] = useState([])
 
   const infoPokemon = () => {
     const infoPokemon1 = useSelector(store => store.infoPokemon)
@@ -28,58 +35,81 @@ const PokedexMainScreen = () => {
   const goBack = () => {
     navigate("/")
   }
+  const caracteresNumericos =  /^[0-9]+$/ 
   const submit = (form) => {
-
+      const index = pokemon.findIndex(fil => fil.name === form.pokemon)
+      const index2 = index + 1
+      navigate(`/pokedex/info_pokemon/${index2}`)
   }
   // funcion para ir a las cofiguraciones
   const settings = () => {
     navigate("/settings")
   }
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon')
+    axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1155')
     .then(res => {
       setPokemon(res.data.results)
-      // console.log(res.data.results)
     })
   }, [])
+  const selectCategoryApi = (name) => {
+    setSelectCategory(true)
+    axios.get(`https://pokeapi.co/api/v2/type/${name}`)
+    .then(res => {
+      setPokemon(res.data.pokemon)
+      
+    })
+  }
+
+  const indexOfLastPokemon = currentPageSelect * postPerPageSelect;
+  const indeOfFristPokemon = indexOfLastPokemon - postPerPageSelect;
+  const currentPostPokemon = pokemon?.slice(indeOfFristPokemon, indexOfLastPokemon);
+
+  const pagination = (pageNumber) => dispatch(currentPage(pageNumber))
 
   const typeOfInput = () => {
     if (typeInput) {
       return (
         <div className='main-screen__text-pokemon'>
-          <label 
-            htmlFor="namePokemon" 
-            className={stateInput ? "encogido" : "namePokemon-label"} 
-            onClick={() => setStateInput(!stateInput)}>
-          </label>
-          <input  id='namePokemon' className='namePokemon-input' type="text"/>
+          <input  
+            id='namePokemon' 
+            className={stateInput ? "shrunken" : "namePokemon-input"}  
+            type="text"
+            {...register("pokemon")}
+          />
+          {/* <button className={animationSee ? `main-screen__btn-search--name-pokemon` : `Off`}>Submit</button> */}
+          <button 
+            type='button'
+            // onClick={() => setAnimationSee(!animationSee)} 
+            onClick={() => setStateInput(!stateInput)}
+            className={stateInput ? `btn__pokemon--search2` : `btn__pokemon--search1`}
+          ></button>
         </div>
       )
     }else{
       return (
-        <select name="" id="" className='main-screen__select'>
-              <option value="">All Pokemons</option>
-              <option value="">Normal</option>
-              <option value="">fighting</option>
-              <option value="">flying</option>
-              <option value="">poison</option>
-              <option value="">ground</option>
-              <option value="">rock</option>
-              <option value="">bug</option>
-              <option value="">ghost</option>
-              <option value="">steel</option>
-              <option value="">fire</option>
-              <option value="">water</option>
-              <option value="">grass</option>
-              <option value="">electric</option>
-              <option value="">psychic</option>
-              <option value="">ice</option>
-              <option value="">dragon</option>
-              <option value="">dark</option>
-              <option value="">fairy</option>
-              <option value="">unknown</option>
-              <option value="">shadow</option>
-            </select>
+        <select name="" id="" className='main-screen__select' onChange={e => selectCategoryApi(e.target.value)}>
+            <option value="">All Pokemons</option>
+            <option value="normal">normal</option>
+            <option value="fighting">fighting</option>
+            <option value="flying">flying</option>
+            <option value="poison">poison</option>
+            <option value="ground">ground</option>
+            <option value="rock">rock</option>
+            <option value="bug">bug</option>
+            <option value="ghost">ghost</option>
+            <option value="steel">steel</option>
+            <option value="fire">fire</option>
+            <option value="water">water</option>
+            <option value="grass">grass</option>
+            <option value="electric">electric</option>
+            <option value="psychic">psychic</option>
+            <option value="ice">ice</option>
+            <option value="dragon">dragon</option>
+            <option value="dark">dark</option>
+            <option value="fairy">fairy</option>
+            <option value="unknown">unknown</option>
+            <option value="shadow">shadow</option>
+          </select>
       )
     }
   }
@@ -113,15 +143,24 @@ const PokedexMainScreen = () => {
         </button>
         <div className='container__card'> 
         {/* componente de cards */}
-          {
-            pokemon.map(e => (
+        {
+          selectCategory ? (
+            currentPostPokemon?.map(e => (
+              <PokedexCard url={e.pokemon?.url} key={e.pokemon?.name} />
+              )) 
+          ) : (
+            currentPostPokemon?.map(e => (
               <PokedexCard url={e.url} key={e.name} />
-              ))
-          }
+              )) 
+          )
+        }
         </div>
         {/* boton para ir a la ventana de configuraciones */}
         <div className='page__settings' onClick={settings}>
           <i className="fa-solid fa-gear page__settings--icon"></i>
+        </div>
+        <div className='pagination'>
+          <PaginationPokemon postPerPage={postPerPageSelect} totalPagePokemon={pokemon?.length} pagination={pagination}/>
         </div>
       </div>
     </div>
