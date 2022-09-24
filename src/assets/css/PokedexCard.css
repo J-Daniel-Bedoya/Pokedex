@@ -11,20 +11,59 @@
 }
 /* la card que muestra la información de los pokemones */
 .card-pokedex{
-  background-color: rgb(105, 55, 243);
+  /* background-color: #37f3a5; */
   width: 12rem;
   height: 13rem;
-  padding: 1rem 2rem;
-  border-radius: 10px;
   transition: .7s;
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  border-radius: 10px;
 }
 .card-pokedex:hover{
   transform: scale(1.1);
 }
+/* lista de atributos de los pokemones */
+.card__pokedex--container{
+  border-radius: 10px;
+  width: 98%;
+  height: 98%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__list{
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  opacity: 0;
+  transition: 1.2s;
+  bottom: -.1rem;
+}
+.card__list:hover{
+  border-radius: 10px;
+  opacity: 100%;
+  background-color: rgba(23, 23, 23, 0.881);
+}
+.card__tittle--ul{
+  /* top: 10px; */
+  padding-top: 10px;
+}
+#pokemon__img2{
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+  bottom: 2.5rem;
+  left: 70%;
+}
+
 /* el nomebre de cada pokemon */
 .card__tittle{
   font-size: 17px;
@@ -33,15 +72,9 @@
   left: 5px;
   color: #fff;
 }
-/* lista de atributos de los pokemones */
-.card__list{
-  list-style: none;
-  position: relative;
-  right: 12px;
-}
 .card__container--list{
   background-color: rgba(255, 255, 255, 0.299);
-  margin: 2px auto;
+  margin: 3px auto;
   border-radius: 3px;
   width: fit-content;
   padding: 1px 9px;
@@ -49,7 +82,7 @@
 }
 .p-type{
   display: inline-block;
-  width: 2.3rem;
+  width: 2.4rem;
 }
 .card__list--li{
   font-size: 12px;
@@ -61,10 +94,8 @@
 }
 
 #pokemon__img {
-  width: 7rem;
-  height: 7rem;
+  width: 10rem;
+  height: 10rem;
   position: absolute;
-  top: 4rem;
-  left: 6rem;
-  /* background-color: aqua; */
+  top: 2.5rem;
 }

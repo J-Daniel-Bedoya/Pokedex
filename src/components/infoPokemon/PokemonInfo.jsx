@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../../assets/css/PokemonInfo.css'
-
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({})
   const navigate = useNavigate()
@@ -10,16 +9,18 @@ const PokemonInfo = () => {
   const settings = () => {
     navigate("/settings")
   }
-  const atras = () => {
+  const atras = (e) => {
+    e.preventDefault()
     navigate(-1)
   }
   useEffect(() => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then(res => {
       setPokemon(res.data)
+      
     })
   }, [id])
-
+  
   return (
     // contenedor general
     <div className='PokemonInfo' >
@@ -65,10 +66,10 @@ const PokemonInfo = () => {
                 <p className='pokemon__abilities--tittle'>Abilities</p>
                 <div className='pokemon__abilities--cotainer-description'>
                   <div className='pokemon__abilities--text'>
-                    <p className='pokemon__abilities--description'>{pokemon.abilities?.[0].ability.name}</p>  
+                    <p className='pokemon__abilities--description'>{pokemon.abilities?.[0]?.ability.name}</p>  
                   </div>
                   <div className='pokemon__abilities--text'>
-                    <p className='pokemon__abilities--description'>{pokemon.abilities?.[1].ability.name}</p>
+                    <p className='pokemon__abilities--description'>{pokemon.abilities?.[1]?.ability.name}</p>
                   </div>
                 </div>
               </div>
