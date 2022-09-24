@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import colors from '../../../public/colors.json';
+import types from '../../../public/types.json'
 import '../../assets/css/PokemonInfo.css'
+
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({})
   const navigate = useNavigate()
@@ -19,11 +22,46 @@ const PokemonInfo = () => {
       setPokemon(res.data)
       
     })
-  }, [id])
+  }, [id]) 
   
+  const colorsFont = () => {
+    let color = null
+    types.map((e, index) => {
+      if (pokemon.types?.[0].type.name === e) {
+        color = colors[index]
+      }
+    })
+    return color
+  }
+  const colorsFont2 = () => {
+    let color = null
+    types.map((e, index) => {
+      if (pokemon.types?.[1]?.type.name === e) {
+        color = colors[index]
+      }
+    })
+    return color
+  }
+  const typeComplete = () =>{
+    if (pokemon.types?.length > 1){
+      return "pokemon__type--text"
+    }
+    else{
+      return "pokemon__type--complete"
+    }
+  }
+  const typeComplete2 = () =>{
+    if (pokemon.types?.length > 1){
+      return "pokemon__type--text"
+    }
+    else{
+      return ""
+    }
+  }
+
   return (
     // contenedor general
-    <div className='PokemonInfo' >
+    <div className='PokemonInfo' style={{background: colorsFont()}}>
       <div className='pokemon'>
         {/* <img className='pokemon__logo' src="../../assets/img/International_Pokémon_logo.svg.png" alt="" /> */}
         <div className='pokemon__logo'></div>
@@ -49,14 +87,14 @@ const PokemonInfo = () => {
             </div>
             {/* segunda y tercera card type and abilities */}
             <div className='pokemon__type--abilities'>
-              <div className='pokemon__type'>
+              <div className='pokemon__type' >
                 <hr className='pokemon__barra--type'/>
                 <p className='pokemon__type--tittle'>Type</p>
                 <div className='pokemon__type--container-description'>
-                  <div className='pokemon__type--text'>
-                    <p className='pokemon__type--description'>{pokemon.types?.[0]?.type.name}</p> 
+                  <div className={typeComplete()} style={{background: colorsFont()}}>
+                    <p className='pokemon__type--description' >{pokemon.types?.[0]?.type.name}</p> 
                   </div>
-                  <div className='pokemon__type--text'>
+                  <div className={typeComplete2()} style={{background: colorsFont2()}}>
                     <p className='pokemon__type--description'>{pokemon.types?.[1]?.type.name}</p>
                   </div>
                 </div> 
@@ -128,11 +166,19 @@ const PokemonInfo = () => {
           </div>
           {/* información secundaria encounters and movements */}
           <div className='pokemon__info--secundaria'>
-            <div className='pokemon__encounters'>Encounters</div>
+            <div className='pokemon__encounters'>
+              <i className="fa-solid fa-location-pin"></i> 
+              <p className='pokemon__encounters--p'>Encounters</p>
+            </div>
             <div className='pokemon__movements'>
+              <hr className='pokemon__movements--hr1'/>
+              <h3 className='pokemon__movements--tittle'>Movements</h3>
               {
                 pokemon.moves?.map(e => (
-                  <p key={e.url}>{e.move.name}</p>
+                  <div className='pokemon__movements--cotainer-p'>
+                    <p key={e.url} className="pokemon__movements--p">{e.move.name}</p>
+                    <hr className='pokemon__movements--hr2'/>
+                  </div>
                 ))
               }
             </div>

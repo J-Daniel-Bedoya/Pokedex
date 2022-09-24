@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   background-color: var(--bg-color-principal);
-  background-color: aqua;
 }
 /* Información de la página y del pokemon */
 .pokemon{
@@ -154,13 +153,27 @@
   justify-content: center;
   gap: 1.5rem;
 }
+.pokemon__type--complete{
+  position: relative;
+  width: 100%;
+  left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 5px;
+}
 .pokemon__type--text{
-  background-color: #737272;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
 }
 /* información de la tercera card */
 .pokemon__abilities{
@@ -312,18 +325,57 @@
   gap: 1rem;
 }
 .pokemon__encounters{
-  background-color: rgb(217, 147, 17);
+  background-color: #c5c3c3;
   height: 2rem;
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.pokemon__encounters:hover{
+  background-color: #959393;
+}
+.pokemon__encounters--p{
+  padding-left: 10px;
 }
 .pokemon__movements{
-  /* grid-area: movements; */
-  background-color: rgb(168, 226, 43);
-  height: 20rem;
+  background-color: #ffffff;
   width: 15rem;
-  height: 115rem;
+  height: auto;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+.pokemon__movements--hr1{
+  margin-top: 2rem;
+  background-color: #b1b1b1;
+  width: 90%;
+  height: .01px;
+}
+.pokemon__movements--tittle{
+  position: relative;
+  bottom: 19px;
+  font-size: 23px;
+  background-color: #fff;
+  padding: 0 10px 15px 10px;
+}
+.pokemon__movements--cotainer-p{
+  width: 40%;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 2px;
+}
+.pokemon__movements--hr2{
+  border: none;
+  height: .1px;
+  margin: 6px 0;
+  width: 100%;
+  background-color: rgb(205, 200, 200);
+}
+
 
 @keyframes colorAnimation {
   0%{

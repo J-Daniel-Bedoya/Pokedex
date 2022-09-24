@@ -23,19 +23,13 @@ const PokedexMainScreen = () => {
   const [stateInput, setStateInput] = useState(false)
   const [selectCategory, setSelectCategory] = useState(false)
   const [pokemon, setPokemon] = useState([])
-
-  const infoPokemon = () => {
-    const infoPokemon1 = useSelector(store => store.infoPokemon)
-    return (
-      <div>{infoPokemon1}</div>
-    )
-  }
+  const [selectType, setSelectType] = useState([])
 
   // funcion para ir hacia salir de la sección
   const goBack = () => {
     navigate("/")
   }
-  const caracteresNumericos =  /^[0-9]+$/ 
+  // funcion para captar los nombres que se copien en los inputs
   const submit = (form) => {
       const index = pokemon.findIndex(fil => fil.name === form.pokemon)
       const index2 = index + 1
@@ -45,27 +39,28 @@ const PokedexMainScreen = () => {
   const settings = () => {
     navigate("/settings")
   }
+  // funcion para consumir todos los pokemones
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1155')
     .then(res => {
       setPokemon(res.data.results)
     })
   }, [])
+  // funcion para mostrar por tipo a los pokemones
   const selectCategoryApi = (name) => {
     setSelectCategory(true)
     axios.get(`https://pokeapi.co/api/v2/type/${name}`)
     .then(res => {
       setPokemon(res.data.pokemon)
-      
     })
   }
-
-  const indexOfLastPokemon = currentPageSelect * postPerPageSelect;
-  const indeOfFristPokemon = indexOfLastPokemon - postPerPageSelect;
-  const currentPostPokemon = pokemon?.slice(indeOfFristPokemon, indexOfLastPokemon);
-
-  const pagination = (pageNumber) => dispatch(currentPage(pageNumber))
-
+  // funcion para mostrar por tipo a los pokemones
+  useEffect(() => {
+    axios.get('https://pokeapi.co/api/v2/type/')
+    .then(res => {
+      setSelectType(res.data.results)
+    })
+  }, [])
   const typeOfInput = () => {
     if (typeInput) {
       return (
@@ -76,43 +71,37 @@ const PokedexMainScreen = () => {
             type="text"
             {...register("pokemon")}
           />
-          {/* <button className={animationSee ? `main-screen__btn-search--name-pokemon` : `Off`}>Submit</button> */}
           <button 
             type='button'
             // onClick={() => setAnimationSee(!animationSee)} 
             onClick={() => setStateInput(!stateInput)}
             className={stateInput ? `btn__pokemon--search2` : `btn__pokemon--search1`}
-          ></button>
+            ></button>
         </div>
       )
     }else{
       return (
         <select name="" id="" className='main-screen__select' onChange={e => selectCategoryApi(e.target.value)}>
-            <option value="">All Pokemons</option>
-            <option value="normal">normal</option>
-            <option value="fighting">fighting</option>
-            <option value="flying">flying</option>
-            <option value="poison">poison</option>
-            <option value="ground">ground</option>
-            <option value="rock">rock</option>
-            <option value="bug">bug</option>
-            <option value="ghost">ghost</option>
-            <option value="steel">steel</option>
-            <option value="fire">fire</option>
-            <option value="water">water</option>
-            <option value="grass">grass</option>
-            <option value="electric">electric</option>
-            <option value="psychic">psychic</option>
-            <option value="ice">ice</option>
-            <option value="dragon">dragon</option>
-            <option value="dark">dark</option>
-            <option value="fairy">fairy</option>
-            <option value="unknown">unknown</option>
-            <option value="shadow">shadow</option>
+          <option value="">Select Pokemon</option>
+          {
+            selectType.map(select => (
+              <option key={select.url} value={select.name}>{select.name}</option>
+            ))
+          }
           </select>
       )
     }
   }
+  // Paginación
+  const indexOfLastPokemon = currentPageSelect * postPerPageSelect;
+  const indeOfFristPokemon = indexOfLastPokemon - postPerPageSelect;
+  const currentPostPokemon = pokemon?.slice(indeOfFristPokemon, indexOfLastPokemon);
+
+  const pagination = (pageNumber) => {
+    console.log(pageNumber)
+    dispatch(currentPage(pageNumber))
+  }
+
   return (
     // contenedor general de main screen
     <div className={`PokedexMainScreen ${colorChange ? "change-color" : ""}`}>
@@ -148,7 +137,7 @@ const PokedexMainScreen = () => {
             currentPostPokemon?.map(e => (
               <PokedexCard url={e.pokemon?.url} key={e.pokemon?.name} />
               )) 
-          ) : (
+              ) : (
             currentPostPokemon?.map(e => (
               <PokedexCard url={e.url} key={e.name} />
               )) 

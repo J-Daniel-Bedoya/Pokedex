@@ -7,26 +7,24 @@ import axios from 'axios';
 import '../../assets/css/PokedexCard.css'
 
 const PokedexCard = ({url}) => {
-  const [color, setColor] = useState('')
   const [pokemon, setPokemon] = useState({})
-  const dispatch = useDispatch()
   const navigate = useNavigate()
-  
+
   useEffect(() => {
     axios.get(url)
     .then(res => {
       setPokemon(res.data)
     }) 
   }, [url])
+
   const pokemonInfo = (id) => {
     navigate(`/pokedex/info_pokemon/${id}`)
   } 
-
+  
   const colorsFont = () => {
     let color = null
-    types.map(e => {
+    types.map((e, index) => {
       if (pokemon.types?.[0].type.name === e) {
-        const index = types.findIndex(fil => fil === e)
         color = colors[index]
       }
     })

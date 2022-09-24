@@ -11,7 +11,6 @@
 }
 /* la card que muestra la información de los pokemones */
 .card-pokedex{
-  /* background-color: #37f3a5; */
   width: 12rem;
   height: 13rem;
   transition: .7s;
@@ -21,6 +20,7 @@
   align-items: center;
   position: relative;
   border-radius: 10px;
+  cursor: pointer;
 }
 .card-pokedex:hover{
   transform: scale(1.1);
@@ -32,7 +32,7 @@
   height: 98%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
 }
 
 .card__list{
