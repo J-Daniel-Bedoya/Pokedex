@@ -61,11 +61,11 @@ const PokedexCard = ({url}) => {
     if (pokemon.types?.length > 1){
       return (
         <div className="card__type--text-content">
-          <div className='card__type--text'>
+          <div className='card__type--text card__scale'>
             <i className={`fa-solid ${arrayIcon[0]} icon-card`} style={{background: colorsFont()}}></i>
             <p className='pokemon__type--description' >{pokemon.types?.[0]?.type.name}</p> 
           </div>
-          <div className='card__type--text'>
+          <div className='card__type--text card__scale'>
             <i className={`fa-solid ${arrayIcon1[0]} icon-card`} style={{background: colorsFont1()}}></i>
             <p className='pokemon__type--description'>{pokemon.types?.[1]?.type.name}</p>
           </div>
@@ -74,7 +74,7 @@ const PokedexCard = ({url}) => {
         )
       }else {
       return (
-        <div className="card__type--complete">
+        <div className="card__type--complete card__scale">
           <i className={`fa-solid ${arrayIcon[0]} icon-card`} style={{background: colorsFont()}}></i>
           <p className='pokemon__type--description'>{pokemon.types?.[0]?.type.name}</p>
         </div>
@@ -88,12 +88,12 @@ const PokedexCard = ({url}) => {
       <div className='card-pokedex' onClick={() => pokemonInfo(pokemon.id)} style={{background: colorsFont()}}>
         <img id='pokemon__img' src={pokemon.sprites?.other["dream_world"].front_default} alt={pokemon.name}/>
         <h3 className='card__tittle'>{pokemon?.name}</h3>
+        <p>#{pokemon.id}</p>
         <div className='card__pokedex--container'>
           <ul className='card__list'>
-            <h3 className='card__tittle card__tittle--ul'>{pokemon?.name}</h3>
-            <hr className='nose'/>
+            <hr className='card__barra--tittle--hr'/>
             <div className='card__type--info-text'>
-              <b>Type:</b>
+              <b>Type</b>
               {typeComplete()}
             </div>
             <div className='card__content'>
