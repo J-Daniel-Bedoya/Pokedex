@@ -156,6 +156,7 @@
 .pokemon__type--description{
   font-size: 13px;
   font-weight: 500;
+  color: #fff;
 }
 .icon-card{
   width: 1.8rem;
