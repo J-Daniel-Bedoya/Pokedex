@@ -354,22 +354,36 @@
 .pokemon__movements{
   background-color: #ffffff;
   width: 15rem;
-  height: auto;
-  border-radius: 15px;
+  height: 150vh;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.pokemon__movements::-webkit-scrollbar{
+  width: .3rem;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+.pokemon__movements::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background-color: #a7eecf;
 }
 .pokemon__movements--hr1{
   margin-top: 2rem;
   background-color: #b1b1b1;
   width: 90%;
   height: .01px;
+  position: sticky;
+  top: 15px;
 }
 .pokemon__movements--tittle{
-  position: relative;
-  bottom: 19px;
+  margin-top: -1.2rem;
+  position: sticky;
+  top: 0;
   font-size: 23px;
   background-color: #fff;
   padding: 0 10px 15px 10px;

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import { useForm } from 'react-hook-form';
+import { pokemonArray } from '../../store/slices/pokemon.slice';
 import { useNavigate } from 'react-router-dom';
 import PokedexCard from './PokedexCard';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PaginationPokemon from './PaginationPokemon';
 import '../../assets/css/PokedexMainScreen.css'
 import '../../assets/css/PokedexCard.css'
@@ -15,11 +15,11 @@ const PokedexMainScreen = () => {
   const colorChange = useSelector(state => state.colorChange)
   const currentPageSelect = useSelector(state => state.currentPage)
   const postPerPageSelect = useSelector(state => state.postPerPage)
-
+  const pokemon = useSelector(state => state.pokemon)
+  const dispatch = useDispatch()
   const [typeInput, setTypeInput] = useState(false)
   const [stateInput, setStateInput] = useState(false)
   const [selectCategory, setSelectCategory] = useState(false)
-  const [pokemon, setPokemon] = useState([])
   const [selectType, setSelectType] = useState([])
   const [text_pokemon, setText_pokemon] = useState('')
 
@@ -47,7 +47,7 @@ const PokedexMainScreen = () => {
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1155')
     .then(res => {
-      setPokemon(res.data.results)
+      dispatch(pokemonArray(res.data.results))
     })
   }, [])
   // funcion para mostrar por tipo a los pokemones
@@ -55,7 +55,7 @@ const PokedexMainScreen = () => {
     setSelectCategory(true)
     axios.get(`https://pokeapi.co/api/v2/type/${name}`)
     .then(res => {
-      setPokemon(res.data.pokemon)
+      dispatch(pokemonArray(res.data.pokemon))
     })
   }
   // funcion para mostrar por tipo a los pokemones
@@ -150,7 +150,7 @@ const PokedexMainScreen = () => {
           <i className="fa-solid fa-gear page__settings--icon"></i>
         </div>
         <div className='pagination'>
-          <PaginationPokemon postPerPage={postPerPageSelect} totalPagePokemon={pokemon} />
+          <PaginationPokemon postPerPage={postPerPageSelect} />
         </div>
       </div>
     </div>

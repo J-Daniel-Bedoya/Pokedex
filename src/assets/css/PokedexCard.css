@@ -6,13 +6,13 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 4rem 3rem;
   padding-bottom: 3rem;
 }
 /* la card que muestra la información de los pokemones */
 .card-pokedex{
-  width: 12rem;
-  height: 13rem;
+  width: 13rem;
+  height: 15rem;
   transition: .7s;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,7 @@
   position: relative;
   border-radius: 10px;
   cursor: pointer;
+  background: radial-gradient(blue, black);
 }
 .card-pokedex:hover{
   transform: scale(1.1);
@@ -42,54 +43,16 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   opacity: 0;
   transition: 1.2s;
   bottom: -.1rem;
+  justify-content: center;
+  align-items: center;
 }
 .card__list:hover{
   border-radius: 10px;
   opacity: 100%;
   background-color: rgba(23, 23, 23, 0.881);
-}
-.card__tittle--ul{
-  padding-top: 10px;
-}
-#pokemon__img2{
-  width: 5rem;
-  height: 5rem;
-  position: relative;
-  bottom: 2.5rem;
-  left: 70%;
-  animation: slide-img-pokemon 6s infinite;
-}
-/* el nomebre de cada pokemon */
-.card__tittle{
-  font-size: 17px;
-  padding-bottom: 7px;
-  position: relative;
-  left: 5px;
-  color: #fff;
-}
-.card__container--list{
-  background-color: rgba(255, 255, 255, 0.299);
-  margin: 3px auto;
-  border-radius: 3px;
-  width: fit-content;
-  padding: 1px 9px;
-  display: inline-block;
-}
-.p-type{
-  display: inline-block;
-  width: 2.4rem;
-}
-.card__list--li{
-  font-size: 12px;
-  padding: 3px 0;
-  color: #fff;
-}
-.card__list--hp{
-  padding: 2px 5px;
 }
 
 #pokemon__img {
@@ -100,6 +63,124 @@
   animation: scale-img-pokemon 1.7s infinite;
   animation-timing-function: ease-in-out;
 }
+.card__tittle--ul{
+  padding-top: 4rem;
+}
+#pokemon__img2{
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+  bottom: 1.5rem;
+
+  left: 70%;
+  animation: slide-img-pokemon 6s infinite;
+}
+/* el nomebre de cada pokemon */
+.card__tittle{
+  font-size: 17px;
+  padding-bottom: 17px;
+  position: relative;
+  left: 5px;
+  color: #fff;
+}
+.nose{
+  width: 90%;
+  height: 10px;
+  border: none;
+  position: relative;
+  top: -10px;
+  background-color: #fff;
+}
+.card__content{
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card__container--list{
+  margin: 3px auto 8px auto;
+  border-radius: 3px;
+  width: 3.5rem;
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card__container--list > p {
+  font-weight: 800;
+  color: #fff;
+}
+.p-type{
+  display: inline-block;
+  width: 2.4rem;
+}
+.card__list--li{
+  font-size: 12px;
+  font-weight: 400;
+  padding: 3px 0;
+  color: #fff;
+
+}
+.card__list--hp{
+  padding: 2px 5px;
+}
+.card__type--info-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.card__type--info-text > b{
+  color: #ffffff;
+  font-size: 14px;
+}
+.card__type--text-content{
+  width: 90%;
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+}
+.card__type--text{
+  width: 50%;
+  height: 1.7rem;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  background-color: #7E697E;
+  border-radius: 2.3px;
+}
+.pokemon__type--description{
+  font-size: 13px;
+  font-weight: 500;
+}
+.icon-card{
+  width: 1.8rem;
+  height: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: 0 0 7px #fff;
+  color: #ffffff;
+  text-shadow: 0 0 3px #000000;
+}
+.card__type--complete{
+  width: 50%;
+  height: 1.7rem;
+  padding: 0 15px 0 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 6px;
+  background-color: #7E697E;
+  border-radius: 2.3px;
+}
+
 @keyframes scale-img-pokemon {
   0% {
     transform: scale(1);
@@ -114,13 +195,13 @@
 }
 @keyframes slide-img-pokemon {
   0% {
-    transform: translateX(0);
+    transform: translateX(-60%);
   }
   50% {
-    transform: translateX(-200%);
+    transform: translateX(-300%);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(-60%);
   }
 
 }
