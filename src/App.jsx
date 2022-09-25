@@ -9,6 +9,7 @@ import {
   Route,
 } from 'react-router-dom'
 import PokemonInfo from "./components/infoPokemon/PokemonInfo"
+import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes"
 
 
 function App() {
@@ -19,9 +20,12 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<PokedexStart />} />
-          <Route path="/pokedex/:name" element={<PokedexMainScreen />} />
           <Route path="/settings" element={<PokedexSettings />} />
-          <Route path="/pokedex/info_pokemon/:id" element={<PokemonInfo />}/>
+
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/pokedex" element={<PokedexMainScreen />} />
+            <Route path="/pokedex/info_pokemon/:id" element={<PokemonInfo />}/>
+          </Route>
         </Routes>
       </HashRouter>
     </div>

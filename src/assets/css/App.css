@@ -37,9 +37,6 @@ body{
   --input-color-search: #4d17e2;
   --input-color-search-focus: #936dfa;
 }
-.f{
-  background-color: #959494;
-}
 /* boton de configuraciones */
 .page__settings{
   position: fixed;
@@ -52,6 +49,7 @@ body{
   border-radius: 100%;
   color: #ffffff;
   cursor: pointer;
+  box-shadow: 0 0 9px var(--color-principal);
 } 
 .page__settings--icon {
   color: #ffffff;
@@ -64,12 +62,14 @@ body{
 }
 
 body::-webkit-scrollbar {
-  width: .5rem;
-  background-color: rgb(219, 219, 216);
-  border: 1px solid rgb(73, 73, 73);
+  width: .6rem;
+  background-color: #0f150f;
+  border-radius: 10px;
+  border: #000;
 }
 body::-webkit-scrollbar-thumb {
   width: 100%;
-  border-radius: 20px;
-  background-color: rgb(135, 135, 133);
+  border-radius: 10px;
+  background-color: #7f4ff9;
+  border: #000;
 }

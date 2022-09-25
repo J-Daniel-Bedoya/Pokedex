@@ -1,39 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import PokedexCard from './PokedexCard';
-import { useSelector, useDispatch } from 'react-redux';
-import { currentPage } from '../../store/slices/currentPage.slice';
+import { useSelector } from 'react-redux';
 import PaginationPokemon from './PaginationPokemon';
 import '../../assets/css/PokedexMainScreen.css'
 import '../../assets/css/PokedexCard.css'
 
 const PokedexMainScreen = () => {
-
-  const {register, handleSubmit, reset} = useForm()
+  // const {register, handleSubmit} = useForm()
   const navigate = useNavigate()
-  const {name} = useParams()
+  const nameUser = useSelector(state => state.name)
   const colorChange = useSelector(state => state.colorChange)
   const currentPageSelect = useSelector(state => state.currentPage)
   const postPerPageSelect = useSelector(state => state.postPerPage)
-  const dispatch = useDispatch()
 
   const [typeInput, setTypeInput] = useState(false)
   const [stateInput, setStateInput] = useState(false)
   const [selectCategory, setSelectCategory] = useState(false)
   const [pokemon, setPokemon] = useState([])
   const [selectType, setSelectType] = useState([])
+  const [text_pokemon, setText_pokemon] = useState('')
 
   // funcion para ir hacia salir de la sección
   const goBack = () => {
     navigate("/")
   }
   // funcion para captar los nombres que se copien en los inputs
-  const submit = (form) => {
-      const index = pokemon.findIndex(fil => fil.name === form.pokemon)
+  const submit = () => {
+    let num = Number(text_pokemon)
+    if(text_pokemon == num) {
+      navigate(`/pokedex/info_pokemon/${num}`)
+    }else{
+      let textLowerCase = text_pokemon.toLowerCase()
+      const index = pokemon.findIndex(fil => fil.name === textLowerCase)
       const index2 = index + 1
       navigate(`/pokedex/info_pokemon/${index2}`)
+    }
   }
   // funcion para ir a las cofiguraciones
   const settings = () => {
@@ -69,7 +73,8 @@ const PokedexMainScreen = () => {
             id='namePokemon' 
             className={stateInput ? "shrunken" : "namePokemon-input"}  
             type="text"
-            {...register("pokemon")}
+            value={text_pokemon}
+            onChange={e => setText_pokemon(e.target.value)}
           />
           <button 
             type='button'
@@ -82,7 +87,7 @@ const PokedexMainScreen = () => {
     }else{
       return (
         <select name="" id="" className='main-screen__select' onChange={e => selectCategoryApi(e.target.value)}>
-          <option value="">Select Pokemon</option>
+          <option value=" ">Select Pokemon</option>
           {
             selectType.map(select => (
               <option key={select.url} value={select.name}>{select.name}</option>
@@ -97,10 +102,6 @@ const PokedexMainScreen = () => {
   const indeOfFristPokemon = indexOfLastPokemon - postPerPageSelect;
   const currentPostPokemon = pokemon?.slice(indeOfFristPokemon, indexOfLastPokemon);
 
-  const pagination = (pageNumber) => {
-    console.log(pageNumber)
-    dispatch(currentPage(pageNumber))
-  }
 
   return (
     // contenedor general de main screen
@@ -108,7 +109,7 @@ const PokedexMainScreen = () => {
       <div className='main-screen'>
         {/* header */}
         <h1 className='main-screen__tittle'>Pokedex</h1>
-        <p className='main-screen__text'>Welcome {name}, here you can find your favorite pokemon</p>
+        <p className='main-screen__text'>Welcome {nameUser}, here you can find your favorite pokemon</p>
         {/* configuración para cambiar el tipo de búsqueda */}
         <div className='main-screen__cantainer--type-pokemon'>
           <div className='type-pokemon__catainer'>
@@ -119,7 +120,7 @@ const PokedexMainScreen = () => {
           </div>
         </div>
         {/* input de tipo selector para seleccionar el tipo de pokemon */}
-        <form onSubmit={handleSubmit(submit)} className="main-screen__form">
+        <form onSubmit={submit} className="main-screen__form" autoComplete='Off'>
           <div className='main-screen__container--select'>
             {typeOfInput()}
           </div>
@@ -149,7 +150,7 @@ const PokedexMainScreen = () => {
           <i className="fa-solid fa-gear page__settings--icon"></i>
         </div>
         <div className='pagination'>
-          <PaginationPokemon postPerPage={postPerPageSelect} totalPagePokemon={pokemon?.length} pagination={pagination}/>
+          <PaginationPokemon postPerPage={postPerPageSelect} totalPagePokemon={pokemon} />
         </div>
       </div>
     </div>

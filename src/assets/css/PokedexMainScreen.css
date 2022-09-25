@@ -124,7 +124,8 @@
 .btn-exit{
   position: fixed;
   border-radius: 100%;
-  padding: 12px;
+  width: 3.1rem;
+  height: 3.1rem;
   font-size: 1.3rem;
   color: #fff;
   background-color: #ec3847;
@@ -187,17 +188,6 @@ input[type=checkbox] {
   left: 56%;
 }
 
-/* inptu para copiar el nombre del pokemon */
-
-
-
-.pagination{
-  /* background-color: #03ac1a;
-  height: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-}
 
 
 @keyframes translateYExit {

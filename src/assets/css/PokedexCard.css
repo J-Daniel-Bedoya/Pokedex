@@ -7,7 +7,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 50px;
-  padding-bottom: 9rem;
+  padding-bottom: 3rem;
 }
 /* la card que muestra la información de los pokemones */
 .card-pokedex{
@@ -30,7 +30,7 @@
   border-radius: 10px;
   width: 98%;
   height: 98%;
-  display: flex;
+  display: flex; 
   justify-content: center;
   align-items: center; 
 }
@@ -53,7 +53,6 @@
   background-color: rgba(23, 23, 23, 0.881);
 }
 .card__tittle--ul{
-  /* top: 10px; */
   padding-top: 10px;
 }
 #pokemon__img2{
@@ -62,8 +61,8 @@
   position: relative;
   bottom: 2.5rem;
   left: 70%;
+  animation: slide-img-pokemon 6s infinite;
 }
-
 /* el nomebre de cada pokemon */
 .card__tittle{
   font-size: 17px;
@@ -98,4 +97,30 @@
   height: 10rem;
   position: absolute;
   top: 2.5rem;
+  animation: scale-img-pokemon 1.7s infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes scale-img-pokemon {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+
+}
+@keyframes slide-img-pokemon {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+
 }
