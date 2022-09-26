@@ -15,7 +15,7 @@
   height: 2.5rem;
   cursor: pointer;
   border: none;
-  transition: .5s;
+  transition: .5s; 
 }
 .btn-icon{
   display: flex;

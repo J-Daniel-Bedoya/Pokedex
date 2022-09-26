@@ -62,7 +62,7 @@ body{
 }
 
 body::-webkit-scrollbar {
-  width: .6rem;
+  width: .3rem;
   background-color: #0f150f;
   border-radius: 10px;
   border: #000;

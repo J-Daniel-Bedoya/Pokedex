@@ -12,7 +12,7 @@ const PaginationPokemon = ({postPerPage}) => {
   const numPageNoneSelect = useSelector(state => state.numPageNoneIt)
   // const [numPageNone, setNumPageNone] = useState(true)
   const dispatch = useDispatch()
-
+ 
   const pageNumbers = []
   // const pageTotalNumbers = []
   const totalPage = Math.ceil(totalPagePokemon.length / postPerPage)
