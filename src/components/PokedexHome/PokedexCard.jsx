@@ -92,7 +92,7 @@ const PokedexCard = ({url}) => {
 
         <img id='pokemon__img' src={pokemon.sprites?.other["dream_world"].front_default} alt={pokemon.name}/>
         <h3 className='card__tittle'>{pokemon?.name}</h3>
-        <p>#{pokemon.id}</p>
+        <p style={{background: `linear-gradient(${colorsFont()}, #011111)`}}>#{pokemon.id}</p>
         <div className='card__pokedex--container'>
           <ul className='card__list'>
             <hr className='card__barra--tittle--hr'/>

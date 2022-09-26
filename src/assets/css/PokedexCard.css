@@ -22,7 +22,7 @@
   border-radius: 10px;
   cursor: pointer;
   border: 1px solid #999898;
-  box-shadow: 0 0 15px #a2a1a1;
+  box-shadow: 0 0 12px #8d8c8c;
   background-image: url('../img/d0a6b-pikachu-ball-png.webp');
   background-position: center;
   background-repeat: no-repeat;
@@ -34,11 +34,12 @@
   transform: scale(1.1);
 }
 .card-pokedex > p {
-  background-color: rgb(42, 51, 51);
-  color: #fff;
-  font-size: 12px;
   width: 2.5rem;
   height: 1.4rem;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 2px 2px 7px rgb(52, 51, 51);
   display: flex;
   justify-content: center;
   align-items: center;
