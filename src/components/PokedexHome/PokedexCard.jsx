@@ -117,7 +117,9 @@ const PokedexCard = ({url}) => {
             <img id='pokemon__img2' src={pokemon.sprites?.other["official-artwork"].front_default} alt={pokemon.name}/>
           </ul>
         </div>
-
+        <div className='prueva'>
+          <div className='prueva1'></div>
+        </div>
 
       </div>
     </>

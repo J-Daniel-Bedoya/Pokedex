@@ -21,8 +21,13 @@
   position: relative;
   border-radius: 10px;
   cursor: pointer;
-  background: radial-gradient(blue, black);
+  background-image: url('../img/d0a6b-pikachu-ball-png.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--input-color-search);
 }
+
 .card-pokedex:hover{
   transform: scale(1.1);
 }
