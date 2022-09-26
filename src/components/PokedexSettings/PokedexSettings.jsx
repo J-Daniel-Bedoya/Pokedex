@@ -4,23 +4,26 @@ import { useSelector, useDispatch } from 'react-redux';
 import { color } from '../../store/slices/Color.slice'; 
 import { postPerPage } from '../../store/slices/postPerPage.slice';
 import '../../assets/css/PokedexSettings.css'
+import { useEffect } from 'react';
 
 const PokedexSettings = () => {
   const navigate = useNavigate()
-
   const colorChange = useSelector(state => state.colorChange)
   const dispatch = useDispatch()
+
   const submit = (form) =>{
     dispatch(postPerPage(form))
+    // localStorage.setItem("color", colorChange)
   }
   // funcion para ir hacia atra en las paginas
   const settings = () => {
     navigate(-1)
   }
 
+
   return (
     // contenido general de la ventana de configuraciones
-    <div className={`PokedexSettings ${colorChange ? "change-color" : ""}`}>
+    <div className={`PokedexSettings  ${colorChange && "change-color"}`}>
       <div className='settings__container'>
         <h1 className='settings__tittle'>Settings</h1>
         {/* conguración del color de la página */}

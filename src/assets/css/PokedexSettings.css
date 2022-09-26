@@ -99,7 +99,7 @@ input[type=checkbox] {
 }
 
 .items-page__select{
-  width: 38%;
+  width: 38%; 
   height: 3.3rem;
   text-align: center;
   font-size: 20px;

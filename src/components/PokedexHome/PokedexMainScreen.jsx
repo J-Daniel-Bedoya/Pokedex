@@ -3,6 +3,7 @@ import axios from 'axios';
 import { pokemonArray } from '../../store/slices/pokemon.slice';
 import { useNavigate } from 'react-router-dom';
 import PokedexCard from './PokedexCard';
+import { currentPage } from '../../store/slices/currentPage.slice';
 import { useSelector, useDispatch } from 'react-redux';
 import PaginationPokemon from './PaginationPokemon';
 import '../../assets/css/PokedexMainScreen.css'
@@ -56,6 +57,7 @@ const PokedexMainScreen = () => {
     axios.get(`https://pokeapi.co/api/v2/type/${name}`)
     .then(res => {
       dispatch(pokemonArray(res.data.pokemon))
+      dispatch(currentPage(1))
     })
   }
   // funcion para mostrar por tipo a los pokemones
@@ -105,7 +107,9 @@ const PokedexMainScreen = () => {
 
   return (
     // contenedor general de main screen
-    <div className={`PokedexMainScreen ${colorChange ? "change-color" : ""}`}>
+    <div className={
+      `PokedexMainScreen ${colorChange ? "change-color" : ""}`
+      }>
       <div className='main-screen'>
         {/* header */}
         <h1 className='main-screen__tittle'>Pokedex</h1>

@@ -10,7 +10,7 @@ const PaginationPokemon = ({postPerPage}) => {
   const [numPage, setNumPage] = useState(1)
   const [numPage2, setNumPage2] = useState(9)
   const numPageNoneSelect = useSelector(state => state.numPageNoneIt)
-  // const [numPageNone, setNumPageNone] = useState(true)
+  const [numPageNone1, setNumPageNone1] = useState(false)
   const dispatch = useDispatch()
  
   const pageNumbers = []
@@ -49,24 +49,15 @@ const PaginationPokemon = ({postPerPage}) => {
       dispatch(currentPage(npage))
     }
   } 
-  // const disabled = () => {
-  //   if (totalPage <= numPage2){
-  //     setNumPage2(pageTotalNumbers[pageTotalNumbers.length-1])
-  //     console.log(numPage2)
-  //   }
-  // }
+
   const dispatchAction = (num) => {
-    // setColorActive(true)
-    
     dispatch(currentPage(num))
-    // return (
-    //   <button 
-    //     key={num}
-    //     onClick={() => dispatchAction(num)}
-    //     className='selected'
-    //   >{num}
-    //   </button>
-    // )
+    // setNumPageNone1(!numPageNone1)
+    // pageNumbers.map(e => {
+    //   if (e === num){
+
+    //   }
+    // })
   }
  
 
@@ -77,7 +68,7 @@ return (
         <button 
           onClick={() => prev(numPage)} 
           disabled={numPage===1} 
-          className={"pagination__btn btn-icon selected"}>
+          className={"pagination__btn btn-icon"}>
           <span className={"material-symbols-outlined"}>chevron_left</span>
         </button>
       
@@ -87,7 +78,7 @@ return (
         <button 
           key={num}
           onClick={() => dispatchAction(num)}
-          className={'selected'}
+          // className="selected"
         >{num}
         </button>
       ))
@@ -97,7 +88,7 @@ return (
         <button 
           onClick={() => next(numPage)} 
           disabled={totalPage2 <= numPage2} 
-          className={"pagination__btn btn-icon selected"}>
+          className={"pagination__btn btn-icon"}>
           <span className={"material-symbols-outlined"}>chevron_right</span>
         </button>
     

@@ -4,7 +4,7 @@ export const ColorSlice = createSlice ({
   name: 'infoPokemon',
   initialState: false,
   reducers: {
-    color: state => {
+    color: (state) => {
       return !state
     }
   },

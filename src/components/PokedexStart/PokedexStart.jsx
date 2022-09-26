@@ -24,7 +24,9 @@ const PokedexStart = () => {
   }
   return (
 
-    <div className={`container__page ${colorChange ? "change-color" : ""}`}>
+    <div className={
+      `container__page ${colorChange ? "change-color" : ""}`
+      }>
       <div className='page__content-image'>
         {/* header */}
         <h1 className='page__tittle'>Hello trainer!</h1>
