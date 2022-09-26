@@ -133,17 +133,17 @@ const PokedexMainScreen = () => {
         </button>
         <div className='container__card'> 
         {/* componente de cards */}
-        {
-          selectCategory ? (
-            currentPostPokemon?.map(e => (
-              <PokedexCard url={e.pokemon?.url} key={e.pokemon?.name} />
-              )) 
-              ) : (
-            currentPostPokemon?.map(e => (
-              <PokedexCard url={e.url} key={e.name} />
-              )) 
-          )
-        }
+          {
+            selectCategory ? (
+              currentPostPokemon?.map(e => (
+                <PokedexCard url={e.pokemon?.url} key={e.pokemon?.name} />
+                )) 
+                ) : (
+              currentPostPokemon?.map(e => (
+                <PokedexCard url={e.url} key={e.name} />
+                )) 
+            )
+          }
         </div>
         {/* boton para ir a la ventana de configuraciones */}
         <div className='page__settings' onClick={settings}>

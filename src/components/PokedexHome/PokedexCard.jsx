@@ -84,8 +84,12 @@ const PokedexCard = ({url}) => {
 
   return (
     <>
-      {/* card para mostra la información de los pokemones */}
-      <div className='card-pokedex' onClick={() => pokemonInfo(pokemon.id)} style={{background: colorsFont()}}>
+      {/* card para mostra la información de los pokemones  #EAEBEC   #0C0E10*/}
+      <div 
+        className='card-pokedex' 
+        onClick={() => pokemonInfo(pokemon.id)} 
+        style={{background: `radial-gradient(${colorsFont()}, #0C0E10)`}}>
+
         <img id='pokemon__img' src={pokemon.sprites?.other["dream_world"].front_default} alt={pokemon.name}/>
         <h3 className='card__tittle'>{pokemon?.name}</h3>
         <p>#{pokemon.id}</p>

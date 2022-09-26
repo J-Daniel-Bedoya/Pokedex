@@ -16,6 +16,7 @@ const PaginationPokemon = ({postPerPage}) => {
   const pageNumbers = []
   // const pageTotalNumbers = []
   const totalPage = Math.ceil(totalPagePokemon.length / postPerPage)
+  const totalPage2 = Math.floor(totalPagePokemon.length / postPerPage)
 
 
   if (totalPage <= 9) {
@@ -95,7 +96,7 @@ return (
       numPageNoneSelect &&
         <button 
           onClick={() => next(numPage)} 
-          disabled={totalPage <= numPage2} 
+          disabled={totalPage2 <= numPage2} 
           className={"pagination__btn btn-icon selected"}>
           <span className={"material-symbols-outlined"}>chevron_right</span>
         </button>

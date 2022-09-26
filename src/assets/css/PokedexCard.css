@@ -21,6 +21,8 @@
   position: relative;
   border-radius: 10px;
   cursor: pointer;
+  border: 1px solid #999898;
+  box-shadow: 0 0 15px #a2a1a1;
   background-image: url('../img/d0a6b-pikachu-ball-png.webp');
   background-position: center;
   background-repeat: no-repeat;
