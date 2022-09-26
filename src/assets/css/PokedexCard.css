@@ -33,6 +33,12 @@
 .card-pokedex:hover{
   transform: scale(1.1);
 }
+.card-pokedex:hover .card__list{
+  clip-path: circle(150% at top right);
+  background-color: rgba(23, 23, 23, 0.881);
+  border-radius: 10px;
+  opacity: 100%;
+}
 .card-pokedex > p {
   width: 2.5rem;
   height: 1.4rem;
@@ -66,19 +72,15 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  opacity: 0;
-  transition: 1.2s;
+  clip-path: circle(0 at top right);
+  transition: 1s;
   bottom: -.1rem;
   justify-content: center;
   align-items: center;
   z-index: 1;
   padding-top: 5rem;
 }
-.card__list:hover{
-  border-radius: 10px;
-  opacity: 100%;
-  background-color: rgba(23, 23, 23, 0.881);
-}
+
 
 #pokemon__img {
   width: 10rem;
