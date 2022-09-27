@@ -1,21 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
   
 export const colorPerPageSlice = createSlice({
-  name: 'isVer',
+  name: 'storageColor',
   initialState: false,
   reducers: {
-    stateTrue: (state) => {
-      return !state
-    },
-    isVerFuction: (state, actions) =>{
-      if (actions.payload){
-        localStorage.setItem("color", "change-color")
-      }else{
-        localStorage.setItem("color", "")
-      }
+    storageDate: (state, actions) => {
+      return actions.payload
     }
   }
 })
   
-export const { isVerFuction, stateTrue } = colorPerPageSlice.actions;
+export const { storageDate } = colorPerPageSlice.actions;
 export default colorPerPageSlice.reducer;

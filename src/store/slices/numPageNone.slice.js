@@ -5,8 +5,8 @@ export const numPageNoneSlice = createSlice({
   initialState: true,
   reducers: {
     numPageNone: (state, actions) => {
-      const n = actions.payload
-      return n
+      const numberTrueOrFalse = actions.payload
+      return numberTrueOrFalse
     }
   }
 })

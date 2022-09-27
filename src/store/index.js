@@ -5,6 +5,8 @@ import postPerPageSlice from "./slices/postPerPage.slice";
 import numPageNoneSlice from "./slices/numPageNone.slice";
 import pokemonSlice from "./slices/pokemon.slice";
 import pokemonObjectSlice from "./slices/pokemonObject.slice";
+import colorPerPageSlice from "./slices/colorPerPage.slice";
+
 
 export default configureStore({
   reducer: {
@@ -13,6 +15,7 @@ export default configureStore({
     postPerPage: postPerPageSlice,
     numPageNoneIt: numPageNoneSlice,
     pokemon: pokemonSlice,
-    pokemonObjec: pokemonObjectSlice
+    pokemonObjec: pokemonObjectSlice,
+    storageColor: colorPerPageSlice
 	}
 })
