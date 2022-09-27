@@ -51,4 +51,6 @@
 }
 .pagination button.selected{
   background-color: var(--change-color-bg-btn);
+  color: #fff;
+  font-size: 18px;
 }

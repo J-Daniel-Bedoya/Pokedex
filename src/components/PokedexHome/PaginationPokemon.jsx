@@ -44,7 +44,7 @@ const PaginationPokemon = ({postPerPage}) => {
     setNumPage2(numPage2 +5)
     if (numPage === 1) {
       dispatch(currentPage(10))
-      setNumber(number+9)
+      setNumber(10)
     }else{
       setNumber(number+5)
       dispatch(currentPage(npage))
@@ -71,7 +71,7 @@ return (
       numPageNoneSelect &&
         <button 
           onClick={() => prev(numPage)} 
-          disabled={numPage <= 1} 
+          disabled={numPage <= 2} 
           className={"pagination__btn btn-icon"}>
           <span className={"material-symbols-outlined"}>chevron_left</span>
         </button>

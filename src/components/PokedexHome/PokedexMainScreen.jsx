@@ -10,9 +10,9 @@ import '../../assets/css/PokedexMainScreen.css'
 import '../../assets/css/PokedexCard.css'
 
 const PokedexMainScreen = () => {
-  // const {register, handleSubmit} = useForm()
+
   const navigate = useNavigate()
-  const nameUser = useSelector(state => state.name)
+  const nameUser = localStorage.getItem("name")
   const colorChange = useSelector(state => state.colorChange)
   const currentPageSelect = useSelector(state => state.currentPage)
   const postPerPageSelect = useSelector(state => state.postPerPage)

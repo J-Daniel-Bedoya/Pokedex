@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { nameSucces } from '../../store/slices/userName.slice';
+import { useSelector } from 'react-redux';
 import '../../assets/css/PokedexStart.css'
 
 
 const PokedexStart = () => {
 
-  const {register, handleSubmit, reset} = useForm()
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [userName, setUserName] = useState('')
   // funcion para agregar la información del formulario 
   const submit = () => {
-    dispatch(nameSucces(userName))
+    localStorage.setItem("name", userName)
     navigate('/pokedex')
   } 
   const colorChange = useSelector(state => state.colorChange)

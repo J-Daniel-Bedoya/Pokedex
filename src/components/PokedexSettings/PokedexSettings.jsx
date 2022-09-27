@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { color } from '../../store/slices/Color.slice'; 
+// import { color } from '../../store/slices/Color.slice'; 
 import { postPerPage } from '../../store/slices/postPerPage.slice';
 import '../../assets/css/PokedexSettings.css'
 import { useEffect } from 'react';
+
+
+// const NColor = () => {
+
+  
+// }
 
 const PokedexSettings = () => {
   const navigate = useNavigate()
@@ -19,11 +25,29 @@ const PokedexSettings = () => {
   const settings = () => {
     navigate(-1)
   }
+  // const [colorStorage, setColorStorage] = useState("change-color")
+  const [saveDate, setSaveDate] = useState(false)
+  const isVer = () =>{
+    setSaveDate(!saveDate)
+    if (saveDate){
+      localStorage.setItem("color", "change-color")
+    }else{
+      localStorage.setItem("color", "")
+    }
+  }
+  const [storage, setStorage] = useState('')
 
+  // const nColor = () => {
+  //   return localStorage.getItem("color")
+  // }
+  const n = localStorage.getItem("color")
+  useEffect(() => {
+    setStorage(n)
+  }, [n])
 
   return (
     // contenido general de la ventana de configuraciones
-    <div className={`PokedexSettings  ${colorChange && "change-color"}`}>
+    <div className={`PokedexSettings  ${storage}`}>
       <div className='settings__container'>
         <h1 className='settings__tittle'>Settings</h1>
         {/* conguración del color de la página */}
@@ -33,7 +57,7 @@ const PokedexSettings = () => {
             <div className='theme__light-dark'>
               <h4 className='theme__light'>Light</h4>
               <input id="cheked" type="checkbox" />
-              <label onClick={() => dispatch(color())} htmlFor="cheked" id='circle'><div></div></label>
+              <label onClick={() => isVer()} htmlFor="cheked" id='circle'><div></div></label>
               <h4 className='theme__dark'>Dark</h4>
             </div>
           </div>
