@@ -7,6 +7,7 @@ import { currentPage } from "../../store/slices/currentPage.slice";
 import { useSelector, useDispatch } from "react-redux";
 import PaginationPokemon from "./PaginationPokemon";
 import { storageDate } from "../../store/slices/colorPerPage.slice";
+import { setNameActual } from "../../store/slices/nameActual.slice";
 import "../../assets/css/PokedexMainScreen.css";
 import "../../assets/css/PokedexCard.css";
 
@@ -27,6 +28,7 @@ const PokedexMainScreen = () => {
   // funcion para ir hacia salir de la sección
   const goBack = () => {
     navigate("/");
+    dispatch(setNameActual(true))
   };
   // funcion para captar los nombres que se copien en los inputs
   const submit = () => {

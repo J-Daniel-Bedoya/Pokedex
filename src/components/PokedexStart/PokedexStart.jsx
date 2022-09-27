@@ -3,18 +3,31 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { storageDate } from "../../store/slices/colorPerPage.slice";
 import { useDispatch } from "react-redux";
+import { setNameActual } from "../../store/slices/nameActual.slice";
 import "../../assets/css/PokedexStart.css";
 
 const PokedexStart = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
+  const nameActualS = useSelector(state => state.nameActual)
+  // const [nameActual, setNameActual] = useState(false) 
 
   // funcion para agregar la información del formulario
+  useEffect(() => {
+    if (nameActualS){
+      navigate("/")
+    }else{
+      navigate("/pokedex")
+    }
+    
+  }, [])
   const submit = () => {
     localStorage.setItem("name", userName);
     navigate("/pokedex");
+    dispatch(setNameActual(false))
   };
+
   const storage = useSelector((state) => state.storageColor);
   // funcion para abrir la ventana de configuraciones
   const settings = () => {
