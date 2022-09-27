@@ -15,11 +15,13 @@ const PokedexStart = () => {
 
   // funcion para agregar la información del formulario
   useEffect(() => {
-    // if (nameActualS){
-    //   navigate("/")
-    // }else{
-    //   navigate("/pokedex")
-    // }
+    if (nameActualS){
+      navigate("/")
+    }else{
+      if (localStorage.getItem("name")) {
+        navigate("/pokedex")
+      }
+    }
     
   }, [])
   const submit = () => {
