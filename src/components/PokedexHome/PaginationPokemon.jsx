@@ -10,8 +10,7 @@ const PaginationPokemon = ({postPerPage}) => {
   const [numPage, setNumPage] = useState(1)
   const [numPage2, setNumPage2] = useState(9)
   const numPageNoneSelect = useSelector(state => state.numPageNoneIt)
-  const [numberArray, setNumberArray] = useState([])
-  const [numberArray1, setNumberArray1] = useState(false)
+  const [number, setNumber] = useState(1)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -37,6 +36,7 @@ const PaginationPokemon = ({postPerPage}) => {
     setNumPage(numPage-5)
     setNumPage2(numPage2-5)
     dispatch(currentPage(npage))
+    setNumber(number-5)
     navigate("/pokedex")
   } 
   const next = (npage) => {
@@ -44,21 +44,24 @@ const PaginationPokemon = ({postPerPage}) => {
     setNumPage2(numPage2 +5)
     if (numPage === 1) {
       dispatch(currentPage(10))
+      setNumber(number+9)
     }else{
+      setNumber(number+5)
       dispatch(currentPage(npage))
     }
     navigate("/pokedex")
   } 
-
   const dispatchAction = (num) => {
     dispatch(currentPage(num))
-    if (numPage >= 4) {
+    setNumber(num)
+    if (numPage >= 5) {
       setNumPage(num-4)
       setNumPage2(num+4)
     }else{
       setNumPage(1)
       setNumPage2(9)
     }
+    
   }
  
 
@@ -78,6 +81,7 @@ return (
     {
       pageNumbers.map(num => (
         <button 
+          className={num === number && `selected`}
           key={num}
           onClick={() => dispatchAction(num)}
         >{num}
