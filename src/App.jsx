@@ -6,6 +6,7 @@ import "./assets/css/App.css";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import PokemonInfo from "./components/infoPokemon/PokemonInfo";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
+import LoginNewUser from "./components/PokedexStart/login/LoginNewUser";
 
 function App() {
   return (

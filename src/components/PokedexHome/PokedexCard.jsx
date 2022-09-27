@@ -6,7 +6,7 @@ import colors from "../../../public/colors.json";
 import types from "../../../public/types.json";
 import icons from "../../../public/icons.json";
 import axios from "axios";
-import "../../assets/css/PokedexCard.css";
+import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 
 const PokedexCard = ({ url }) => {
   // const pokemon = useSelector(state => state.pokemonObjec)

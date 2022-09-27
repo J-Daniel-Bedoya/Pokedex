@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import colors from "../../../public/colors.json";
 import types from "../../../public/types.json";
-import "../../assets/css/PokemonInfo.css";
+import "../../assets/css/infoPokemonStyles/PokemonInfo.css";
 
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({});

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
   
-export const colorPerPageSlice = createSlice({
+export const colorStorageDateSlice = createSlice({
   name: 'storageColor',
   initialState: false,
   reducers: {
@@ -10,5 +10,5 @@ export const colorPerPageSlice = createSlice({
   }
 })
   
-export const { storageDate } = colorPerPageSlice.actions;
-export default colorPerPageSlice.reducer;
+export const { storageDate } = colorStorageDateSlice.actions;
+export default colorStorageDateSlice.reducer;

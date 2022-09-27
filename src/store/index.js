@@ -5,7 +5,7 @@ import postPerPageSlice from "./slices/postPerPage.slice";
 import numPageNoneSlice from "./slices/numPageNone.slice";
 import pokemonSlice from "./slices/pokemon.slice";
 import pokemonObjectSlice from "./slices/pokemonObject.slice";
-import colorPerPageSlice from "./slices/colorPerPage.slice";
+import colorStorageDateSlice from "./slices/colorStorageDate.slice";
 import nameActualSlice from "./slices/nameActual.slice";
 
 export default configureStore({
@@ -16,7 +16,7 @@ export default configureStore({
     numPageNoneIt: numPageNoneSlice,
     pokemon: pokemonSlice,
     pokemonObjec: pokemonObjectSlice,
-    storageColor: colorPerPageSlice,
+    storageColor: colorStorageDateSlice,
     nameActual: nameActualSlice
 	}
 })

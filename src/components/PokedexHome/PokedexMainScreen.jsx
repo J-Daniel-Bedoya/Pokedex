@@ -6,10 +6,10 @@ import PokedexCard from "./PokedexCard";
 import { currentPage } from "../../store/slices/currentPage.slice";
 import { useSelector, useDispatch } from "react-redux";
 import PaginationPokemon from "./PaginationPokemon";
-import { storageDate } from "../../store/slices/colorPerPage.slice";
+import { storageDate } from "../../store/slices/colorStorageDate.slice";
 import { setNameActual } from "../../store/slices/nameActual.slice";
-import "../../assets/css/PokedexMainScreen.css";
-import "../../assets/css/PokedexCard.css";
+import "../../assets/css/PokedexHomeStyles/PokedexMainScreen.css";
+import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 
 const PokedexMainScreen = () => {
   const navigate = useNavigate();
@@ -28,7 +28,8 @@ const PokedexMainScreen = () => {
   // funcion para ir hacia salir de la sección
   const goBack = () => {
     navigate("/");
-    dispatch(setNameActual(true))
+    localStorage.setItem("name", "")
+    dispatch(setNameActual(true));
   };
   // funcion para captar los nombres que se copien en los inputs
   const submit = () => {

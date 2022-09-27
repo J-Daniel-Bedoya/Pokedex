@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { storageDate } from "../../store/slices/colorPerPage.slice";
+import { storageDate } from "../../store/slices/colorStorageDate.slice";
 import { postPerPage } from "../../store/slices/postPerPage.slice";
-import "../../assets/css/PokedexSettings.css";
+import "../../assets/css/PokedexSettingsStyles/PokedexSettings.css";
 import { useEffect } from "react";
 
 const PokedexSettings = () => {
@@ -21,16 +21,30 @@ const PokedexSettings = () => {
   };
   // const [colorStorage, setColorStorage] = useState("change-color")
   const [saveDate, setSaveDate] = useState(false);
-  const isVer = () => {
-    setSaveDate(!saveDate);
+  const [stateBtn, setStateBtn] = useState(1)
+  const isVer = (s) => {
+    setStateBtn(s +1)
+    console.log(stateBtn)
+    setSaveDate(!saveDate)
+    localStorage.setItem("estadoBtn", saveDate)
     if (saveDate) {
-      localStorage.setItem("color", "");
+      if (saveDate === true && s === 2){
+        localStorage.setItem("color", "");
+      }else{
+        localStorage.setItem("color", "change-color");
+        console.log("yo soy true 1")
+      }
     } else {
-      localStorage.setItem("color", "change-color");
+      if (saveDate === false && s === 1){
+        console.log(s)
+        console.log("yo soy true 2")
+        localStorage.setItem("color", "change-color");
+      }else{
+        localStorage.setItem("color", "");
+        console.log("yo soy false 1")
+      }
     }
   };
-  // const [storage, setStorage] = useState("");
-
 
   let n = localStorage.getItem("color");
   useEffect(() => {
@@ -49,7 +63,7 @@ const PokedexSettings = () => {
             <div className="theme__light-dark">
               <h4 className="theme__light">Light</h4>
               <input id="cheked" type="checkbox" />
-              <label onClick={() => isVer()} htmlFor="cheked" id="circle">
+              <label onClick={() => isVer(stateBtn)} htmlFor="cheked" id="circle">
                 <div></div>
               </label>
               <h4 className="theme__dark">Dark</h4>

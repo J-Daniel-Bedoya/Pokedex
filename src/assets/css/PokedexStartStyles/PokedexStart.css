@@ -9,6 +9,7 @@
   gap: 1rem;
   background-color: var(--bg-color-principal);
   color: var(--color-principal);
+  position: relative;
 }
 /* titulo */
 .page__tittle{
@@ -36,7 +37,7 @@ img{
   
 }
 /* input del name */
-.page__form--input{
+/* .page__form--input{
   width: 50%;
   padding: .9rem;
   border-radius: 2rem;
@@ -62,4 +63,15 @@ img{
   border: none;
   cursor: pointer; 
 }
-
+ */
+.page__form .page__form--change-register{
+  padding: 2px 8px;
+  border: none;
+  border-radius: 7px 2px;
+  background-color: rgb(86, 27, 224);
+  color: #fff;
+  transition: .3s;
+}
+.page__form .page__form--change-register:hover{
+  transform: scale(1.03);
+}

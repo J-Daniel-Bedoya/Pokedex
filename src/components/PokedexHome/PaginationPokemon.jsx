@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { currentPage } from "../../store/slices/currentPage.slice";
 import { numPageNone } from "../../store/slices/numPageNone.slice";
-import "../../assets/css/PaginationPokemon.css";
+import "../../assets/css/PokedexHomeStyles/PaginationPokemon.css";
 
 const PaginationPokemon = ({ postPerPage }) => {
   const totalPagePokemon = useSelector((state) => state.pokemon);

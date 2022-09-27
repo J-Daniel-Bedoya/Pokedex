@@ -1,36 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { storageDate } from "../../store/slices/colorPerPage.slice";
+import { storageDate } from "../../store/slices/colorStorageDate.slice";
 import { useDispatch } from "react-redux";
-import { setNameActual } from "../../store/slices/nameActual.slice";
-import "../../assets/css/PokedexStart.css";
+import "../../assets/css/PokedexStartStyles/PokedexStart.css";
+import LoginNewUser from "./login/LoginNewUser";
+import LoginExistingUser from "./login/loginExistingUser";
 
 const PokedexStart = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-  const nameActualS = useSelector(state => state.nameActual)
-  // const [nameActual, setNameActual] = useState(false) 
-
-  // funcion para agregar la información del formulario
-  useEffect(() => {
-    if (nameActualS){
-      navigate("/")
-    }else{
-      if (localStorage.getItem("name")) {
-        navigate("/pokedex")
-      }
-    }
-    
-  }, [])
-  const submit = () => {
-    localStorage.setItem("name", userName);
-    navigate("/pokedex");
-    dispatch(setNameActual(false))
-  };
 
   const storage = useSelector((state) => state.storageColor);
+  const [isVisibelFormRegister, setIsVisibelFormRegister] = useState(false)
+  const [isVisibelFormLoginUp, setIsVisibelFormLoginUp] = useState(false)
   // funcion para abrir la ventana de configuraciones
   const settings = () => {
     navigate("/settings");
@@ -54,19 +37,17 @@ const PokedexStart = () => {
       {/* formulario para preguntar sobre el nombre */}
       <div className="page__form">
         <h2 className="page__form--tittle">Give me your name to start</h2>
-        <input
-          type="text"
-          id="name"
-          autoComplete="Off"
-          placeholder="Your name"
-          className="page__form--input"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        {/* boton de configuraciones */}
-        <button className="btn-submit" onClick={submit}>
-          <i className="fa-brands fa-telegram"></i>
-        </button>
+
+        <button className="page__form--change-register"
+          onClick={() => setIsVisibelFormRegister(!isVisibelFormRegister)}>Register</button>
+        {
+          isVisibelFormRegister && <LoginNewUser setIsVisibelFormRegister={setIsVisibelFormRegister} />
+        }
+        <button className="page__form--change-loginUp"
+          onClick={() => setIsVisibelFormLoginUp(!isVisibelFormLoginUp)}>LoginUp</button>
+        {
+          isVisibelFormLoginUp && <LoginExistingUser setIsVisibelFormLoginUp={setIsVisibelFormLoginUp}/>
+        }
         <div className="page__settings" onClick={settings}>
           <i className="fa-solid fa-gear page__settings--icon"></i>
         </div>
