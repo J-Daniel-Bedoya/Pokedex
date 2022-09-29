@@ -2,7 +2,6 @@ import PokedexStart from "./components/PokedexStart/PokedexStart";
 import PokedexMainScreen from "./components/PokedexHome/PokedexMainScreen";
 import PokedexSettings from "./components/PokedexSettings/PokedexSettings";
 
-import { useSelector } from "react-redux";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import PokemonInfo from "./components/infoPokemon/PokemonInfo";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
