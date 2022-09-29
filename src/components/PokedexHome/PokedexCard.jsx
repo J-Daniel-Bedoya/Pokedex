@@ -7,12 +7,16 @@ import types from "../../../public/types.json";
 import icons from "../../../public/icons.json";
 import axios from "axios";
 import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
+import { setFollows } from "../../store/slices/follows.slice";
+// import { setIsFollow } from "../../store/slices/isFollow.slice";
 
 const PokedexCard = ({ url }) => {
-  // const pokemon = useSelector(state => state.pokemonObjec)
-  const [pokemon, setPokemon] = useState({});
+  const [followsColor, setFollowsColor] = useState(false);
+  const [pokemon, setPokemon] = useState({}); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+
 
   useEffect(() => {
     axios.get(url).then((res) => {
@@ -94,15 +98,24 @@ const PokedexCard = ({ url }) => {
       );
     }
   };
+  
 
   return (
     <>
-      {/* card para mostra la información de los pokemones  #EAEBEC   #0C0E10*/}
+      {/* card para mostra la información de los pokemones  */}
       <div
         className="card-pokedex"
-        onClick={() => pokemonInfo(pokemon.id)}
         style={{ background: `radial-gradient(${colorsFont()}, #0C0E10)` }}
-      >
+        >
+        <div className="card__follow" onClick={() => setFollowsColor(!followsColor)}>
+          <button
+            className="card__follow--btn"
+            onClick={() => dispatch(setFollows(pokemon.name))}
+            style={{background: followsColor ? "#040720" : "#f3efef"}}
+            >
+            {followsColor ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>}
+          </button>
+        </div>
         <img
           id="pokemon__img"
           src={pokemon.sprites?.other["dream_world"].front_default}
@@ -112,7 +125,7 @@ const PokedexCard = ({ url }) => {
         <p style={{ background: `linear-gradient(${colorsFont()}, #011111)` }}>
           #{pokemon.id}
         </p>
-        <div className="card__pokedex--container">
+        <div className="card__pokedex--container" onClick={() => pokemonInfo(pokemon.id)}>
           <ul className="card__list">
             <hr className="card__barra--tittle--hr" />
             <div className="card__type--info-text">

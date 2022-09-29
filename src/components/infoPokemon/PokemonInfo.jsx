@@ -7,6 +7,7 @@ import "../../assets/css/infoPokemonStyles/PokemonInfo.css";
 
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({});
+  const [followsColor, setFollowsColor] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const settings = () => {
@@ -55,6 +56,10 @@ const PokemonInfo = () => {
     }
   };
 
+  const followin = (poke) => {
+    // setFollow(follow+1)
+    console.log(poke);
+  };
   return (
     // contenedor general
     <div className="PokemonInfo" style={{ background: colorsFont() }}>
@@ -65,6 +70,22 @@ const PokemonInfo = () => {
           <div className="pokemon__info">
             {/* información principal - primera card */}
             <div className="pokemon__info--principal">
+              <div
+                className="card__follow"
+                onClick={() => setFollowsColor(!followsColor)}
+              >
+                <button
+                  className="card__follow--btn"
+                  onClick={() => dispatch(setFollows(pokemon.name))}
+                  style={{ background: followsColor ? "#040720" : "#f3efef" }}
+                >
+                  {followsColor ? (
+                    <i class="fa-solid fa-heart-circle-check"></i>
+                  ) : (
+                    <i class="fa-solid fa-heart"></i>
+                  )}
+                </button>
+              </div>
               <img
                 className="pokemon__img"
                 src={pokemon.sprites?.other["official-artwork"].front_default}
@@ -97,7 +118,7 @@ const PokemonInfo = () => {
                     className={typeComplete()}
                     style={{ background: colorsFont() }}
                   >
-                    <p className="pokemon__type--description">
+                    <p className="pokemon__type--descriptions">
                       {pokemon.types?.[0]?.type.name}
                     </p>
                   </div>
@@ -133,50 +154,31 @@ const PokemonInfo = () => {
               <hr className="pokemon__stats--barra" />
               <h2 className="pokemon__stats--tittle">stats base</h2>
               <div className="pokemon__stats--container">
-                <div className="pokemon__stats--cotainer-statistics">
-                  <div className="pokemon__stats--statistics">
-                    <p className="pokemon__statistics--text">hp:</p>
-                  </div>
-                  <div className="pokemon__div--barra">
-                    <div className="pokemon__font-barra">
-                      <p>{pokemon.stats?.[0].base_stat}/150</p>
-                      <div className="pokemon__animation--barras"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="pokemon__stats--cotainer-statistics">
-                  <div className="pokemon__stats--statistics">
-                    <p className="pokemon__statistics--text">speed:</p>
-                  </div>
-                  <div className="pokemon__div--barra">
-                    <div className="pokemon__font-barra">
-                      <p>{pokemon.stats?.[5].base_stat}/150</p>
-                      <div className="pokemon__animation--barras"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="pokemon__stats--cotainer-statistics">
-                  <div className="pokemon__stats--statistics">
-                    <p className="pokemon__statistics--text">attack:</p>
-                  </div>
-                  <div className="pokemon__div--barra">
-                    <div className="pokemon__font-barra">
-                      <p>{pokemon.stats?.[1].base_stat}/150</p>
-                      <div className="pokemon__animation--barras"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="pokemon__stats--cotainer-statistics">
-                  <div className="pokemon__stats--statistics">
-                    <p className="pokemon__statistics--text">defense:</p>
-                  </div>
-                  <div className="pokemon__div--barra">
-                    <div className="pokemon__font-barra">
-                      <p>{pokemon.stats?.[2].base_stat}/150</p>
-                      <div className="pokemon__animation--barras"></div>
-                    </div>
-                  </div>
-                </div>
+                {pokemon.stats?.map(
+                  (stat) => (
+                    console.log(stat),
+                    (
+                      <div className="pokemon__stats--cotainer-statistics">
+                        <div className="pokemon__stats--statistics">
+                          <p className="pokemon__statistics--text">
+                            {stat.stat.name}:
+                          </p>
+                        </div>
+                        <div className="pokemon__div--barra">
+                          <div
+                            className="pokemon__font-barra"
+                            style={{
+                              width: `${(stat.base_stat * 100) / 150}%`,
+                            }}
+                          >
+                            <p>{stat.base_stat}/150</p>
+                            <div className="pokemon__animation--barras"></div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -191,7 +193,7 @@ const PokemonInfo = () => {
               <h3 className="pokemon__movements--tittle">Movements</h3>
               {pokemon.moves?.map((e) => (
                 <div className="pokemon__movements--cotainer-p">
-                  <p key={e.url} className="pokemon__movements--p">
+                  <p key={e.move.url} className="pokemon__movements--p">
                     {e.move.name}
                   </p>
                   <hr className="pokemon__movements--hr2" />

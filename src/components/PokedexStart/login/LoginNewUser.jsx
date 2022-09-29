@@ -40,17 +40,17 @@ const LoginNewUser = ({setIsVisibelFormRegister}) => {
     <div className="form">
       <div className="form__container">
         <Form onSubmit={handleSubmit(submit)}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" placeholder="Name" {...register("name")}/>
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3">
             <Form.Label>Create Password</Form.Label>
             <Form.Control type="password" placeholder="Password" {...register("create_password")}/>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3">
             <Form.Label>Repeat Password</Form.Label>
             <Form.Control type="password" placeholder="Password" {...register("repeat_password")}/>
           </Form.Group>

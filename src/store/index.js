@@ -4,9 +4,12 @@ import currentPageSlice from "./slices/currentPage.slice";
 import postPerPageSlice from "./slices/postPerPage.slice";
 import numPageNoneSlice from "./slices/numPageNone.slice";
 import pokemonSlice from "./slices/pokemon.slice";
+import pokemonTypeSlice from "./slices/pokemonType.slice";
 import pokemonObjectSlice from "./slices/pokemonObject.slice";
 import colorStorageDateSlice from "./slices/colorStorageDate.slice";
 import nameActualSlice from "./slices/nameActual.slice";
+import isLoadingSlice from "./slices/isLoading.slice";
+import followsSlice from "./slices/follows.slice";
 
 export default configureStore({
   reducer: {
@@ -15,8 +18,11 @@ export default configureStore({
     postPerPage: postPerPageSlice,
     numPageNoneIt: numPageNoneSlice,
     pokemon: pokemonSlice,
+    pokemonType: pokemonTypeSlice,
     pokemonObjec: pokemonObjectSlice,
     storageColor: colorStorageDateSlice,
-    nameActual: nameActualSlice
+    nameActual: nameActualSlice,
+    isLoading: isLoadingSlice,
+    follows: followsSlice,
 	}
 })

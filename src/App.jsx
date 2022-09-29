@@ -1,16 +1,18 @@
 import PokedexStart from "./components/PokedexStart/PokedexStart";
 import PokedexMainScreen from "./components/PokedexHome/PokedexMainScreen";
 import PokedexSettings from "./components/PokedexSettings/PokedexSettings";
-import "./assets/css/App.css";
 
+import { useSelector } from "react-redux";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import PokemonInfo from "./components/infoPokemon/PokemonInfo";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
-import LoginNewUser from "./components/PokedexStart/login/LoginNewUser";
+
+import "./assets/css/App.css";
 
 function App() {
   return (
     <div className="App">
+
       <HashRouter>
         <Routes>
           <Route path="/" element={<PokedexStart />} />

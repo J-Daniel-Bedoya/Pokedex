@@ -36,34 +36,7 @@ img{
   height: 23rem;
   
 }
-/* input del name */
-/* .page__form--input{
-  width: 50%;
-  padding: .9rem;
-  border-radius: 2rem;
-  border: none;
-  background-color: var(--color-cards);
-  box-shadow: 0 0 10px var(--shadow-second);
-  color: var(--color-inputs-text);
-  font-size: 19px;
-  outline: none;
-  font-weight: bold;
-}
 
-.page__form--input:focus{
-  border: 2px solid var(--change-color-border-btn);
-}
-.btn-submit{
-  font-size: 3.7rem;
-  position: relative;
-  left: 20.9%;
-  bottom: 4.7rem;
-  color: var(--change-color-btn);
-  background-color: transparent;
-  border: none;
-  cursor: pointer; 
-}
- */
 .page__form .page__form--change-register{
   padding: 2px 8px;
   border: none;
@@ -73,5 +46,16 @@ img{
   transition: .3s;
 }
 .page__form .page__form--change-register:hover{
+  transform: scale(1.03);
+}
+.page__form .page__form--change-loginUp{
+  padding: 2px 8px;
+  border: none;
+  border-radius: 7px 2px;
+  background-color: rgb(13, 217, 78);
+  color: rgb(226, 225, 225);
+  transition: .3s;
+}
+.page__form .page__form--change-loginUp:hover{
   transform: scale(1.03);
 }

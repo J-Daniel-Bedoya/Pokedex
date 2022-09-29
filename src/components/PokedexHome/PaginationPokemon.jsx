@@ -76,7 +76,7 @@ const PaginationPokemon = ({ postPerPage }) => {
 
       {pageNumbers.map((num) => (
         <button
-          className={num === number && `selected`}
+          className={num === number && 'selected'}
           key={num}
           onClick={() => dispatchAction(num)}
         >

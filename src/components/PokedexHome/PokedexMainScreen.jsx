@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { pokemonArray } from "../../store/slices/pokemon.slice";
+import { getPokemonArrayThunk, getPokemonCategory } from "../../store/slices/pokemon.slice";
+import { getSelectTypeThunk } from "../../store/slices/pokemonType.slice";
 import { useNavigate } from "react-router-dom";
 import PokedexCard from "./PokedexCard";
-import { currentPage } from "../../store/slices/currentPage.slice";
 import { useSelector, useDispatch } from "react-redux";
 import PaginationPokemon from "./PaginationPokemon";
 import { storageDate } from "../../store/slices/colorStorageDate.slice";
@@ -18,11 +17,13 @@ const PokedexMainScreen = () => {
   const currentPageSelect = useSelector((state) => state.currentPage);
   const postPerPageSelect = useSelector((state) => state.postPerPage);
   const pokemon = useSelector((state) => state.pokemon);
+  const selectType = useSelector((state) => state.pokemonType);
+  const follow = useSelector(state => state.follows)
+  const [isFollow, setIsFollow] = useState(false)
   const dispatch = useDispatch();
   const [typeInput, setTypeInput] = useState(false);
   const [stateInput, setStateInput] = useState(false);
   const [selectCategory, setSelectCategory] = useState(false);
-  const [selectType, setSelectType] = useState([]);
   const [text_pokemon, setText_pokemon] = useState("");
 
   // funcion para ir hacia salir de la sección
@@ -48,26 +49,17 @@ const PokedexMainScreen = () => {
     navigate("/settings");
   };
   // funcion para consumir todos los pokemones
-  useEffect(() => {
-    axios
-      .get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1155")
-      .then((res) => {
-        dispatch(pokemonArray(res.data.results));
-      });
+  useEffect(() => { 
+    dispatch(getPokemonArrayThunk())
   }, []);
   // funcion para mostrar por tipo a los pokemones
   const selectCategoryApi = (name) => {
     setSelectCategory(true);
-    axios.get(`https://pokeapi.co/api/v2/type/${name}`).then((res) => {
-      dispatch(pokemonArray(res.data.pokemon));
-      dispatch(currentPage(1));
-    });
+    dispatch(getPokemonCategory(name))
   };
   // funcion para mostrar por tipo a los pokemones
   useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/type/").then((res) => {
-      setSelectType(res.data.results);
-    });
+    dispatch(getSelectTypeThunk())
   }, []);
   const typeOfInput = () => {
     if (typeInput) {
@@ -120,9 +112,16 @@ const PokedexMainScreen = () => {
     dispatch(storageDate(n));
   }, [n]);
 
+
   return (
     // contenedor general de main screen
     <div className={`PokedexMainScreen ${storage}`}>
+      <div className="pokemon__follows"> 
+        {
+          follow.length !== 0 ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>
+        }
+        <p>{follow?.length}</p>
+      </div>
       <div className="main-screen">
         {/* header */}
         <h1 className="main-screen__tittle">Pokedex</h1>

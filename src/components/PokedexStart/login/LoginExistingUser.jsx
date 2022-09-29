@@ -1,21 +1,24 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../../assets/css/loginFormsStyles/LoginExistingUser.css";
+import { setNameActual } from "../../../store/slices/nameActual.slice";
 
 const LoginExistingUser = ({ setIsVisibelFormLoginUp }) => {
 
   const {register, handleSubmit} = useForm()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const submit = (form) => {
     localStorage.setItem("name", form.name_loginUp);
     const localeSotoragePassword = localStorage.getItem("password")
     if (form.password_loginUp === localeSotoragePassword) {
       localStorage.setItem("password", form.password_loginUp)
-      console.log(form)
       navigate("/pokedex");
-      dispatch(setNameActual(false));
+      dispatch(setNameActual(false))
     }else{
       alert("Contraseña incorrecta")
     }
@@ -23,17 +26,16 @@ const LoginExistingUser = ({ setIsVisibelFormLoginUp }) => {
 
   return (
     <div className="forms">
-      <h1>Hol</h1>
       <div className="forms__container">
         <Form onSubmit={handleSubmit(submit)}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="text" placeholder="Name" {...register("name_loginUp")} />
             <Form.Text className="text-muted">
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" {...register("password_loginUp")}/>
           </Form.Group>
