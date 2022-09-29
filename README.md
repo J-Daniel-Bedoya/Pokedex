@@ -1,2 +1,2 @@
 # Pokedex
-Link of Netlify: https://imaginative-empanada-ea1004.netlify.app/
+Link of Netlify: https://transcendent-zuccutto-759b55.netlify.app/
