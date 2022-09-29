@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../../../assets/css/loginFormsStyles/LoginExistingUser.css";
 import { setNameActual } from "../../../store/slices/nameActual.slice";
 
-const LoginExistingUser = ({ setIsVisibelFormLoginUp }) => {
+const Login = ({ setIsVisibelFormLoginUp }) => {
 
   const {register, handleSubmit} = useForm()
   const navigate = useNavigate()
@@ -58,4 +58,4 @@ const LoginExistingUser = ({ setIsVisibelFormLoginUp }) => {
   );
 };
 
-export default LoginExistingUser;
+export default Login;

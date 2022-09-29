@@ -115,7 +115,7 @@ const PokedexMainScreen = () => {
   return (
     // contenedor general de main screen
     <div className={`PokedexMainScreen ${storage}`}>
-      <div className="pokemon__follows"> 
+      <div className="pokemon__follows--main-screen"> 
         {
           follow.length !== 0 ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>
         }

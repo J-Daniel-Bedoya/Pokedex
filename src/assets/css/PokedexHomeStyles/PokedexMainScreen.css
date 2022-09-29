@@ -27,7 +27,7 @@
   height: 5rem;
   left: 30%;
 }
-.pokemon__follows{
+.pokemon__follows--main-screen{
   width: 2.5rem;
   height: 2.5rem;
   position: sticky;

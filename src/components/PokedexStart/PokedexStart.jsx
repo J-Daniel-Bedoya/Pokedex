@@ -5,7 +5,8 @@ import { storageDate } from "../../store/slices/colorStorageDate.slice";
 import { useDispatch } from "react-redux";
 import "../../assets/css/PokedexStartStyles/PokedexStart.css";
 import LoginNewUser from "./login/LoginNewUser";
-import LoginExistingUser from "./login/loginExistingUser";
+import Login from "./login/Login";
+
 
 const PokedexStart = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const PokedexStart = () => {
         <button className="page__form--change-loginUp"
           onClick={() => setIsVisibelFormLoginUp(!isVisibelFormLoginUp)}>LoginUp</button>
         {
-          isVisibelFormLoginUp && <LoginExistingUser setIsVisibelFormLoginUp={setIsVisibelFormLoginUp}/>
+          isVisibelFormLoginUp && <Login setIsVisibelFormLoginUp={setIsVisibelFormLoginUp}/>
         }
         <div className="page__settings" onClick={settings}>
           <i className="fa-solid fa-gear page__settings--icon"></i>

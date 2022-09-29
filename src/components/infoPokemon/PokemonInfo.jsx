@@ -3,12 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import colors from "../../../public/colors.json";
 import types from "../../../public/types.json";
+import { useSelector, useDispatch } from "react-redux";
+import { setFollows } from "../../store/slices/follows.slice";
 import "../../assets/css/infoPokemonStyles/PokemonInfo.css";
 
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({});
+  const follow = useSelector(state => state.follows)
   const [followsColor, setFollowsColor] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const { id } = useParams();
   const settings = () => {
     navigate("/settings");
@@ -56,10 +60,7 @@ const PokemonInfo = () => {
     }
   };
 
-  const followin = (poke) => {
-    // setFollow(follow+1)
-    console.log(poke);
-  };
+
   return (
     // contenedor general
     <div className="PokemonInfo" style={{ background: colorsFont() }}>
@@ -68,6 +69,16 @@ const PokemonInfo = () => {
         <div className="pokemon__logo"></div>
         <div className="pokemon__catainer--grup" key={pokemon.name}>
           <div className="pokemon__info">
+            <div className="pokemon__follows">
+              {
+                follow.length !== 0 ? (
+                  <i class="fa-solid fa-heart-circle-check"></i>
+                ) : (
+                  <i class="fa-solid fa-heart"></i>
+                )
+              }
+              <p>{follow?.length}</p>
+            </div>
             {/* información principal - primera card */}
             <div className="pokemon__info--principal">
               <div
