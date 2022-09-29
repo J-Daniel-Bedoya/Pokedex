@@ -19,7 +19,6 @@ const PokedexMainScreen = () => {
   const pokemon = useSelector((state) => state.pokemon);
   const selectType = useSelector((state) => state.pokemonType);
   const follow = useSelector(state => state.follows)
-  const [isFollow, setIsFollow] = useState(false)
   const dispatch = useDispatch();
   const [typeInput, setTypeInput] = useState(false);
   const [stateInput, setStateInput] = useState(false);
