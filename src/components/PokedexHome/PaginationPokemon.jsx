@@ -15,40 +15,43 @@ const PaginationPokemon = ({ postPerPage }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const totalPage = Math.ceil(totalPagePokemon.length / postPerPage);
   const totalPage2 = Math.floor(totalPagePokemon.length / postPerPage);
-  
-  const [pageNumbers, setPageNumbers] = useState([])
-  const arr = []
+
+  const [pageNumbers, setPageNumbers] = useState([]);
+  const arr = [];
   for (let i = numPage; i <= numPage2; i++) {
-    arr.push(i)
+    arr.push(i);
   }
 
   useEffect(() => {
-    let arr = []
+    let arr = [];
     if (totalPage <= 9) {
       dispatch(numPageNone(false));
       for (let i = 1; i <= totalPage; i++) {
-        arr.push(i)
+        arr.push(i);
+      }
+    } else {
+      dispatch(numPageNone(true));
+      for (let i = numPage; i <= numPage2; i++) {
+        arr.push(i);
+      }
     }
-  } else {
-    dispatch(numPageNone(true));
-    for (let i = numPage; i <= numPage2; i++) {
-      arr.push(i)
-    }
-  }
-  setPageNumbers(arr)
+    setPageNumbers(arr);
+  }, [totalPage]);
 
-}, [totalPage])
-
-console.log(arr)
   const prev = (npage) => {
     setNumPage(numPage - 5);
     setNumPage2(numPage2 - 5);
     dispatch(currentPage(npage));
     setNumber(number - 5);
-    navigate("/pokedex");
+    if (numPage <= 5){
+      setNumPage(1)
+      setNumPage2(9)
+      setNumber(1)
+      dispatch(currentPage(1));
+    }
   };
   const next = (npage) => {
     setNumPage(numPage + 5);
@@ -60,18 +63,18 @@ console.log(arr)
       setNumber(number + 5);
       dispatch(currentPage(npage));
     }
-    navigate("/pokedex");
   };
   const dispatchAction = (num) => {
     dispatch(currentPage(num));
     setNumber(num);
-    if (numPage >= 5) {
+    if (num >= 5) {
       setNumPage(num - 4);
       setNumPage2(num + 4);
     } else {
       setNumPage(1);
       setNumPage2(9);
     }
+    return num
   };
 
   return (
@@ -79,37 +82,32 @@ console.log(arr)
       {numPageNoneSelect && (
         <button
           onClick={() => prev(numPage)}
-          disabled={numPage <= 2}
+          disabled={numPage === 1}
           className={"pagination__btn btn-icon"}
         >
           <span className={"material-symbols-outlined"}>chevron_left</span>
         </button>
       )}
 
-      {arr === [] ? (
-        pageNumbers.map((num) => (
-        <button
-          className={num === number && 'selected'}
-          key={num}
-          onClick={() => dispatchAction(num)}
-        >
-          {num}
-        </button>
-      ))) : (
-        arr.map((num) => (
-          console.log(num),
-        <button
-          className={num === number && 'selected'}
-          key={num}
-          onClick={() => dispatchAction(num)}
-        >
-          {num}
-        </button>
-      ))
-        
-      )
-
-    }
+      {arr === []
+        ? pageNumbers.map((num) => (
+            <button
+              className={num === number && "selected"}
+              key={num}
+              onClick={() => dispatchAction(num)}
+            >
+              {num}
+            </button>
+          ))
+        : arr.map((num) => (
+            <button
+              className={num === number && "selected"}
+              key={num}
+              onClick={() => dispatchAction(num)}
+            >
+              {num}
+            </button>
+          ))}
 
       {numPageNoneSelect && (
         <button
