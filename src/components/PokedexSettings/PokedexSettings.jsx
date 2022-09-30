@@ -20,27 +20,41 @@ const PokedexSettings = () => {
   };
 
   const [saveDate, setSaveDate] = useState(false);
+  const [stateBtn, setStateBtn] = useState(1)
 
-  const isVer = () => {
+  const isVer = (s) => {
+    setStateBtn(s +1)
+    setSaveDate(!saveDate)
+    localStorage.setItem("estadoBtn", saveDate)
     if (saveDate) {
-      console.log("h")
-      localStorage.setItem("color", JSON.stringify("change-color"));
+      localStorage.setItem("color", "");
+      if (saveDate === true && s === 2){
+        localStorage.setItem("color", "");
+      }else{
+        localStorage.setItem("color", "change-color");
+        console.log("yo soy true 1")
+      }
     } else {
-      console.log("f")
-      localStorage.setItem("color", JSON.stringify(""));
+      localStorage.setItem("color", "change-color");
+      if (saveDate === false && s === 1){
+        console.log(s)
+        console.log("yo soy true 2")
+        localStorage.setItem("color", "change-color");
+      }else{
+        localStorage.setItem("color", "");
+        console.log("yo soy false 1")
+      }
     }
-  };
-  const [store, setStore] = useState('')
-  let n = JSON.parse(localStorage.getItem("color"))
-
+  }
+  // const [store, setStore] = useState('')
+  let n = localStorage.getItem("color");
   useEffect(() => {
-    setStore(n)
-    isVer()
-  }, [n, isVer]);
+    dispatch(storageDate(n));
+  }, [n]);
 
   return (
     // contenido general de la ventana de configuraciones
-    <div className={store}>
+    <div className={storage}>
     <div className={`PokedexSettings`}>
       <div className="settings__container">
         <h1 className="settings__tittle">Settings</h1>
@@ -52,7 +66,7 @@ const PokedexSettings = () => {
               <h4 className="theme__light">Light</h4>
               <input id="cheked" type="checkbox" />
               <label
-                onClick={() => setSaveDate(!saveDate)}
+                onClick={() => isVer(stateBtn)}
                 htmlFor="cheked"
                 id="circle"
               >
@@ -90,3 +104,4 @@ const PokedexSettings = () => {
 };
 
 export default PokedexSettings;
+
