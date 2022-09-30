@@ -11,12 +11,12 @@ const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({});
   const [followsColor, setFollowsColor] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { id } = useParams();
   const settings = () => {
     navigate("/settings");
   };
-  const atras = (e) => {
+  const prev = (e) => {
     e.preventDefault();
     navigate(-1);
   };
@@ -59,22 +59,20 @@ const PokemonInfo = () => {
     }
   };
 
-  const [followStorage, setFollowStorage] = useState('')
-  const fuctionf = () => {
-    return localStorage.getItem("follows")
-  }
-
+  const [followStorage, setFollowStorage] = useState(0)
+  const followsFuction = localStorage.getItem("follows")
+  
   useEffect(() => {
-    setFollowStorage(fuctionf())
-  }, [fuctionf, followStorage])
+    setFollowStorage(followsFuction)
+    console.log(followStorage)
+  }, [followsFuction, setFollowStorage])
 
-  const [colorState, setColorState] = useState(0)
-  const storageArray =  JSON.parse(localStorage.getItem("arrayFollows"))
+  const [colorState, setColorState] = useState(0);
+  const storageArray = JSON.parse(localStorage.getItem("arrayFollows"));
   useEffect(() => {
-    const filterArray = storageArray?.findIndex(fil => fil === pokemon.name)
-    setColorState(filterArray)
-  }, [storageArray])
-
+    const filterArray = storageArray?.findIndex((fil) => fil === pokemon.name);
+    setColorState(filterArray);
+  }, [storageArray]);
 
   return (
     // contenedor general
@@ -85,14 +83,12 @@ const PokemonInfo = () => {
         <div className="pokemon__catainer--grup" key={pokemon.name}>
           <div className="pokemon__info">
             <div className="pokemon__follows">
-              {
-                followStorage.length !== 0 ? (
-                  <i class="fa-solid fa-heart-circle-check"></i>
-                ) : (
-                  <i class="fa-solid fa-heart"></i>
-                )
-              }
-              <p>{followStorage}</p>
+              {followStorage?.length !== 0 ? (
+                <i className="fa-solid fa-heart-circle-check"></i>
+              ) : (
+                <i className="fa-solid fa-heart"></i>
+              )}
+              <p>{followStorage ? followStorage : 0}</p>
             </div>
             {/* información principal - primera card */}
             <div className="pokemon__info--principal">
@@ -103,19 +99,21 @@ const PokemonInfo = () => {
                 <button
                   className="card__follow--btn"
                   onClick={() => dispatch(setFollows(pokemon.name))}
-                  style={{ background: colorState >=0 ? "#040720" : "#f3efef" }}
+                  style={{
+                    background: colorState >= 0 ? "#040720" : "#f3efef",
+                  }}
                 >
-                  {colorState >=0 ? (
-                    <i class="fa-solid fa-heart-circle-check"></i>
+                  {colorState >= 0 ? (
+                    <i className="fa-solid fa-heart-circle-check"></i>
                   ) : (
-                    <i class="fa-solid fa-heart"></i>
+                    <i className="fa-solid fa-heart"></i>
                   )}
                 </button>
               </div>
               <img
                 className="pokemon__img"
                 src={pokemon.sprites?.other["official-artwork"].front_default}
-                alt=""
+                alt="ab"
               />
               <div className="pokemon__container--weight">
                 <b className="b1">{pokemon.height}</b>
@@ -180,31 +178,26 @@ const PokemonInfo = () => {
               <hr className="pokemon__stats--barra" />
               <h2 className="pokemon__stats--tittle">stats base</h2>
               <div className="pokemon__stats--container">
-                {pokemon.stats?.map(
-                  (stat) => (
-                    console.log(stat),
-                    (
-                      <div className="pokemon__stats--cotainer-statistics">
-                        <div className="pokemon__stats--statistics">
-                          <p className="pokemon__statistics--text">
-                            {stat.stat.name}:
-                          </p>
-                        </div>
-                        <div className="pokemon__div--barra">
-                          <div
-                            className="pokemon__font-barra"
-                            style={{
-                              width: `${(stat.base_stat * 100) / 150}%`,
-                            }}
-                          >
-                            <p>{stat.base_stat}/150</p>
-                            <div className="pokemon__animation--barras"></div>
-                          </div>
-                        </div>
+                {pokemon.stats?.map((stat) => (
+                  <div className="pokemon__stats--cotainer-statistics">
+                    <div className="pokemon__stats--statistics">
+                      <p className="pokemon__statistics--text">
+                        {stat.stat.name}:
+                      </p>
+                    </div>
+                    <div className="pokemon__div--barra">
+                      <div
+                        className="pokemon__font-barra"
+                        style={{
+                          width: `${(stat.base_stat * 100) / 150}%`,
+                        }}
+                      >
+                        <p>{stat.base_stat}/150</p>
+                        <div className="pokemon__animation--barras"></div>
                       </div>
-                    )
-                  )
-                )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -229,7 +222,7 @@ const PokemonInfo = () => {
           </div>
         </div>
       </div>
-      <button onClick={atras} className="btn-exit">
+      <button onClick={prev} className="btn-exit">
         <i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
       </button>
       <div className="page__settings" onClick={settings}>

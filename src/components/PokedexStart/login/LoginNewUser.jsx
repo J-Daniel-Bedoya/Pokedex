@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { storageDate } from "../../../store/slices/colorStorageDate.slice";
-import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { setNameActual } from "../../../store/slices/nameActual.slice";
 import { Button, Form } from "react-bootstrap";
@@ -11,7 +9,6 @@ import "../../../assets/css/loginFormsStyles/LoginNewUser.css";
 const LoginNewUser = ({setIsVisibelFormRegister}) => {
   const {register, handleSubmit} = useForm()
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
   const nameActualS = useSelector((state) => state.nameActual);
   useEffect(() => {
     if (nameActualS) {

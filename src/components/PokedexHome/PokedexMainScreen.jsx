@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { getPokemonArrayThunk, getPokemonCategory } from "../../store/slices/pokemon.slice";
-import { getSelectTypeThunk } from "../../store/slices/pokemonType.slice";
-import { useNavigate } from "react-router-dom";
-import PokedexCard from "./PokedexCard";
+import {
+  getPokemonArrayThunk,
+  getPokemonCategory,
+} from "../../store/slices/pokemon.slice";
 import { useSelector, useDispatch } from "react-redux";
-import PaginationPokemon from "./PaginationPokemon";
+import { useNavigate } from "react-router-dom";
 import { setNameActual } from "../../store/slices/nameActual.slice";
+import { getSelectTypeThunk } from "../../store/slices/pokemonType.slice";
+import PaginationPokemon from "./PaginationPokemon";
+import PokedexCard from "./PokedexCard";
 import "../../assets/css/PokedexHomeStyles/PokedexMainScreen.css";
 import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 
@@ -26,7 +29,7 @@ const PokedexMainScreen = () => {
   // funcion para ir hacia salir de la sección
   const goBack = () => {
     navigate("/");
-    localStorage.setItem("name", "")
+    localStorage.setItem("name", "");
     dispatch(setNameActual(true));
   };
   // funcion para captar los nombres que se copien en los inputs
@@ -46,17 +49,17 @@ const PokedexMainScreen = () => {
     navigate("/settings");
   };
   // funcion para consumir todos los pokemones
-  useEffect(() => { 
-    dispatch(getPokemonArrayThunk())
+  useEffect(() => {
+    dispatch(getPokemonArrayThunk());
   }, []);
   // funcion para mostrar por tipo a los pokemones
   const selectCategoryApi = (name) => {
     setSelectCategory(true);
-    dispatch(getPokemonCategory(name))
+    dispatch(getPokemonCategory(name));
   };
   // funcion para mostrar por tipo a los pokemones
   useEffect(() => {
-    dispatch(getSelectTypeThunk())
+    dispatch(getSelectTypeThunk());
   }, []);
   const typeOfInput = () => {
     if (typeInput) {
@@ -105,79 +108,77 @@ const PokedexMainScreen = () => {
     indexOfLastPokemon
   );
 
-  // const [numberFollows, setNumberFollows] = useState(0)
-  // let n = localStorage.getItem("color");
-  // useEffect(() => {
-  //   setNumberFollows(n)
-  // }, [n]);
-
-  const [followStorage, setFollowStorage] = useState('')
-  const fuctionf = () => {
-    return localStorage.getItem("follows")
-  }
+  const [followStorage, setFollowStorage] = useState(0);
+  const followsFuction = JSON.parse(localStorage.getItem("follows"));
 
   useEffect(() => {
-    setFollowStorage(fuctionf())
-  }, [fuctionf, followStorage])
+    setFollowStorage(followsFuction);
+  }, [followsFuction, followStorage]);
 
   return (
     // contenedor general de main screen
-    <div className={`PokedexMainScreen ${storage}`}>
-      <div className="pokemon__follows--main-screen"> 
-        {
-          followStorage >= 1 ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>
-        }
-        <p>{followStorage}</p>
-      </div>
-      <div className="main-screen">
-        {/* header */}
-        <h1 className="main-screen__tittle">Pokedex</h1>
-        <p className="main-screen__text">
-          Welcome {nameUser}, here you can find your favorite pokemon
-        </p>
-        {/* configuración para cambiar el tipo de búsqueda */}
-        <div className="main-screen__cantainer--type-pokemon">
-          <div className="type-pokemon__catainer">
-            <h5 className="type-pokemon__type">type</h5>
-            <input id="cheked" type="checkbox" />
-            <label
-              htmlFor="cheked"
-              id="circle"
-              onClick={() => setTypeInput(!typeInput)}
-            >
-              <div></div>
-            </label>
-            <h5 className="type-pokemon__pokemon">pokemon</h5>
+    <div className={storage}>
+      <div className={`PokedexMainScreen`}>
+        <div className="pokemon__follows--main-screen">
+          {followStorage >= 1 ? (
+            <i className="fa-solid fa-heart-circle-check"></i>
+          ) : (
+            <i className="fa-solid fa-heart"></i>
+          )}
+          <p>{followStorage >= 1 ? followStorage : 0}</p>
+        </div>
+        <div className="main-screen">
+          {/* header */}
+          <h1 className="main-screen__tittle">Pokedex</h1>
+          <p className="main-screen__text">
+            Welcome {nameUser}, here you can find your favorite pokemon
+          </p>
+          {/* configuración para cambiar el tipo de búsqueda */}
+          <div className="main-screen__cantainer--type-pokemon">
+            <div className="type-pokemon__catainer">
+              <h5 className="type-pokemon__type">type</h5>
+              <input id="cheked" type="checkbox" />
+              <label
+                htmlFor="cheked"
+                id="circle"
+                onClick={() => setTypeInput(!typeInput)}
+              >
+                <div></div>
+              </label>
+              <h5 className="type-pokemon__pokemon">pokemon</h5>
+            </div>
           </div>
-        </div>
-        {/* input de tipo selector para seleccionar el tipo de pokemon */}
-        <form
-          onSubmit={submit}
-          className="main-screen__form"
-          autoComplete="Off"
-        >
-          <div className="main-screen__container--select">{typeOfInput()}</div>
-        </form>
-        {/* boton para ir hacia atras */}
-        <button onClick={goBack} className="btn-exit">
-          <i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
-        </button>
-        <div className="container__card">
-          {/* componente de cards */}
-          {selectCategory
-            ? currentPostPokemon?.map((e) => (
-                <PokedexCard url={e.pokemon?.url} key={e.pokemon?.name} />
-              ))
-            : currentPostPokemon?.map((e) => (
-                <PokedexCard url={e.url} key={e.name} />
-              ))}
-        </div>
-        {/* boton para ir a la ventana de configuraciones */}
-        <div className="page__settings" onClick={settings}>
-          <i className="fa-solid fa-gear page__settings--icon"></i>
-        </div>
-        <div className="pagination">
-          <PaginationPokemon postPerPage={postPerPageSelect} />
+          {/* input de tipo selector para seleccionar el tipo de pokemon */}
+          <form
+            onSubmit={submit}
+            className="main-screen__form"
+            autoComplete="Off"
+          >
+            <div className="main-screen__container--select">
+              {typeOfInput()}
+            </div>
+          </form>
+          {/* boton para ir hacia atras */}
+          <button onClick={goBack} className="btn-exit">
+            <i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+          <div className="container__card">
+            {/* componente de cards */}
+            {selectCategory
+              ? currentPostPokemon?.map((e) => (
+                  <PokedexCard url={e.pokemon?.url} key={e.pokemon?.name} />
+                ))
+              : currentPostPokemon?.map((e) => (
+                  <PokedexCard url={e.url} key={e.name} />
+                ))}
+          </div>
+          {/* boton para ir a la ventana de configuraciones */}
+          <div className="page__settings" onClick={settings}>
+            <i className="fa-solid fa-gear page__settings--icon"></i>
+          </div>
+          <div className="pagination">
+            <PaginationPokemon postPerPage={postPerPageSelect} />
+          </div>
         </div>
       </div>
     </div>

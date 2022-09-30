@@ -8,7 +8,6 @@ export const followsSlice = createSlice({
       const storageArray =  JSON.parse(localStorage.getItem("arrayFollows"))
       if (storageArray !== null){
         state = storageArray
-        console.log("hola")
       }
       const update = [...state]
       const isFavorite = update.indexOf(actions.payload)
@@ -17,6 +16,7 @@ export const followsSlice = createSlice({
       }else{
         update.push(actions.payload)
       }
+      console.log(update.length)
       console.log(update)
       localStorage.setItem("follows", update.length)
       localStorage.setItem("arrayFollows", JSON.stringify(update))

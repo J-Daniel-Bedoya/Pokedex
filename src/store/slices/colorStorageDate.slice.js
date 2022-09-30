@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
   
 export const colorStorageDateSlice = createSlice({
   name: 'storageColor',
-  initialState: false,
+  initialState: '',
   reducers: {
     storageDate: (state, actions) => {
       return actions.payload

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { pokemonObject } from "../../store/slices/pokemonObject.slice";
 import colors from "../../../public/colors.json";
 import types from "../../../public/types.json";
 import icons from "../../../public/icons.json";
 import axios from "axios";
 import { setFollows } from "../../store/slices/follows.slice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { pokemonObject } from "../../store/slices/pokemonObject.slice";
 import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 
 const PokedexCard = ({ url }) => {
@@ -119,7 +119,7 @@ const PokedexCard = ({ url }) => {
             onClick={() => dispatch(setFollows(pokemon.name))}
             style={{background: colorState >= 0 ? "#040720" : "#f3efef"}}
             >
-            {colorState >= 0 ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>}
+            {colorState >= 0 ? <i className="fa-solid fa-heart-circle-check"></i> : <i className="fa-solid fa-heart"></i>}
           </button>
         </div>
         <img
