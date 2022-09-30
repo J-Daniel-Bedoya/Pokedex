@@ -6,17 +6,14 @@ import colors from "../../../public/colors.json";
 import types from "../../../public/types.json";
 import icons from "../../../public/icons.json";
 import axios from "axios";
-import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 import { setFollows } from "../../store/slices/follows.slice";
-// import { setIsFollow } from "../../store/slices/isFollow.slice";
+import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 
 const PokedexCard = ({ url }) => {
   const [followsColor, setFollowsColor] = useState(false);
   const [pokemon, setPokemon] = useState({}); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
 
   useEffect(() => {
     axios.get(url).then((res) => {
@@ -99,6 +96,15 @@ const PokedexCard = ({ url }) => {
     }
   };
   
+  const colorStorage = () => {
+    setFollowsColor(!followsColor)
+  }
+  const [colorState, setColorState] = useState(0)
+  const storageArray =  JSON.parse(localStorage.getItem("arrayFollows"))
+  useEffect(() => {
+    const filterArray = storageArray?.findIndex(fil => fil === pokemon.name)
+    setColorState(filterArray)
+  }, [storageArray])
 
   return (
     <>
@@ -107,13 +113,13 @@ const PokedexCard = ({ url }) => {
         className="card-pokedex"
         style={{ background: `radial-gradient(${colorsFont()}, #0C0E10)` }}
         >
-        <div className="card__follow" onClick={() => setFollowsColor(!followsColor)}>
+        <div className="card__follow" onClick={() => colorStorage()}>
           <button
             className="card__follow--btn"
             onClick={() => dispatch(setFollows(pokemon.name))}
-            style={{background: followsColor ? "#040720" : "#f3efef"}}
+            style={{background: colorState >= 0 ? "#040720" : "#f3efef"}}
             >
-            {followsColor ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>}
+            {colorState >= 0 ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>}
           </button>
         </div>
         <img

@@ -3,13 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import colors from "../../../public/colors.json";
 import types from "../../../public/types.json";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setFollows } from "../../store/slices/follows.slice";
 import "../../assets/css/infoPokemonStyles/PokemonInfo.css";
 
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({});
-  const follow = useSelector(state => state.follows)
   const [followsColor, setFollowsColor] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -60,6 +59,22 @@ const PokemonInfo = () => {
     }
   };
 
+  const [followStorage, setFollowStorage] = useState('')
+  const fuctionf = () => {
+    return localStorage.getItem("follows")
+  }
+
+  useEffect(() => {
+    setFollowStorage(fuctionf())
+  }, [fuctionf, followStorage])
+
+  const [colorState, setColorState] = useState(0)
+  const storageArray =  JSON.parse(localStorage.getItem("arrayFollows"))
+  useEffect(() => {
+    const filterArray = storageArray?.findIndex(fil => fil === pokemon.name)
+    setColorState(filterArray)
+  }, [storageArray])
+
 
   return (
     // contenedor general
@@ -71,13 +86,13 @@ const PokemonInfo = () => {
           <div className="pokemon__info">
             <div className="pokemon__follows">
               {
-                follow.length !== 0 ? (
+                followStorage.length !== 0 ? (
                   <i class="fa-solid fa-heart-circle-check"></i>
                 ) : (
                   <i class="fa-solid fa-heart"></i>
                 )
               }
-              <p>{follow?.length}</p>
+              <p>{followStorage}</p>
             </div>
             {/* información principal - primera card */}
             <div className="pokemon__info--principal">
@@ -88,9 +103,9 @@ const PokemonInfo = () => {
                 <button
                   className="card__follow--btn"
                   onClick={() => dispatch(setFollows(pokemon.name))}
-                  style={{ background: followsColor ? "#040720" : "#f3efef" }}
+                  style={{ background: colorState >=0 ? "#040720" : "#f3efef" }}
                 >
-                  {followsColor ? (
+                  {colorState >=0 ? (
                     <i class="fa-solid fa-heart-circle-check"></i>
                   ) : (
                     <i class="fa-solid fa-heart"></i>

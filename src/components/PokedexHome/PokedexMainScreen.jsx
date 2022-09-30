@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import PokedexCard from "./PokedexCard";
 import { useSelector, useDispatch } from "react-redux";
 import PaginationPokemon from "./PaginationPokemon";
-import { storageDate } from "../../store/slices/colorStorageDate.slice";
 import { setNameActual } from "../../store/slices/nameActual.slice";
 import "../../assets/css/PokedexHomeStyles/PokedexMainScreen.css";
 import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
@@ -18,7 +17,6 @@ const PokedexMainScreen = () => {
   const postPerPageSelect = useSelector((state) => state.postPerPage);
   const pokemon = useSelector((state) => state.pokemon);
   const selectType = useSelector((state) => state.pokemonType);
-  const follow = useSelector(state => state.follows)
   const dispatch = useDispatch();
   const [typeInput, setTypeInput] = useState(false);
   const [stateInput, setStateInput] = useState(false);
@@ -106,20 +104,30 @@ const PokedexMainScreen = () => {
     indeOfFristPokemon,
     indexOfLastPokemon
   );
-  let n = localStorage.getItem("color");
-  useEffect(() => {
-    dispatch(storageDate(n));
-  }, [n]);
 
+  // const [numberFollows, setNumberFollows] = useState(0)
+  // let n = localStorage.getItem("color");
+  // useEffect(() => {
+  //   setNumberFollows(n)
+  // }, [n]);
+
+  const [followStorage, setFollowStorage] = useState('')
+  const fuctionf = () => {
+    return localStorage.getItem("follows")
+  }
+
+  useEffect(() => {
+    setFollowStorage(fuctionf())
+  }, [fuctionf, followStorage])
 
   return (
     // contenedor general de main screen
     <div className={`PokedexMainScreen ${storage}`}>
       <div className="pokemon__follows--main-screen"> 
         {
-          follow.length !== 0 ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>
+          followStorage >= 1 ? <i class="fa-solid fa-heart-circle-check"></i> : <i class="fa-solid fa-heart"></i>
         }
-        <p>{follow?.length}</p>
+        <p>{followStorage}</p>
       </div>
       <div className="main-screen">
         {/* header */}
