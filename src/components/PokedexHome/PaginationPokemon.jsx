@@ -15,25 +15,34 @@ const PaginationPokemon = ({ postPerPage }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const pageNumbers = [];
-
+  
   const totalPage = Math.ceil(totalPagePokemon.length / postPerPage);
   const totalPage2 = Math.floor(totalPagePokemon.length / postPerPage);
-useEffect(() => {
-  if (totalPage <= 9) {
-    dispatch(numPageNone(false));
-    for (let i = 1; i <= totalPage; i++) {
-      pageNumbers.push(i);
+  
+  const [pageNumbers, setPageNumbers] = useState([])
+  const arr = []
+  for (let i = numPage; i <= numPage2; i++) {
+    arr.push(i)
+  }
+
+  useEffect(() => {
+    let arr = []
+    if (totalPage <= 9) {
+      dispatch(numPageNone(false));
+      for (let i = 1; i <= totalPage; i++) {
+        arr.push(i)
     }
   } else {
     dispatch(numPageNone(true));
     for (let i = numPage; i <= numPage2; i++) {
-      pageNumbers.push(i);
+      arr.push(i)
     }
   }
+  setPageNumbers(arr)
 
-}, [])
+}, [totalPage])
 
+console.log(arr)
   const prev = (npage) => {
     setNumPage(numPage - 5);
     setNumPage2(numPage2 - 5);
@@ -77,7 +86,8 @@ useEffect(() => {
         </button>
       )}
 
-      {pageNumbers.map((num) => (
+      {arr === [] ? (
+        pageNumbers.map((num) => (
         <button
           className={num === number && 'selected'}
           key={num}
@@ -85,7 +95,21 @@ useEffect(() => {
         >
           {num}
         </button>
-      ))}
+      ))) : (
+        arr.map((num) => (
+          console.log(num),
+        <button
+          className={num === number && 'selected'}
+          key={num}
+          onClick={() => dispatchAction(num)}
+        >
+          {num}
+        </button>
+      ))
+        
+      )
+
+    }
 
       {numPageNoneSelect && (
         <button
