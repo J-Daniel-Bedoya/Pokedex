@@ -18,6 +18,7 @@ const PokedexMainScreen = () => {
   const storage = useSelector((state) => state.storageColor);
   const currentPageSelect = useSelector((state) => state.currentPage);
   const postPerPageSelect = useSelector((state) => state.postPerPage);
+  const followStorage = useSelector(state => state.follows)
   const pokemon = useSelector((state) => state.pokemon);
   const selectType = useSelector((state) => state.pokemonType);
   const dispatch = useDispatch();
@@ -108,12 +109,6 @@ const PokedexMainScreen = () => {
     indexOfLastPokemon
   );
 
-  const [followStorage, setFollowStorage] = useState(0);
-  const followsFuction = JSON.parse(localStorage.getItem("follows"));
-
-  useEffect(() => {
-    setFollowStorage(followsFuction);
-  }, [followsFuction, followStorage]);
 
   return (
     // contenedor general de main screen

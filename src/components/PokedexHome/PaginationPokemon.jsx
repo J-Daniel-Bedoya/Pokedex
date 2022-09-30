@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { currentPage } from "../../store/slices/currentPage.slice";
 import { numPageNone } from "../../store/slices/numPageNone.slice";
 import "../../assets/css/PokedexHomeStyles/PaginationPokemon.css";
+import { useEffect } from "react";
 
 const PaginationPokemon = ({ postPerPage }) => {
   const totalPagePokemon = useSelector((state) => state.pokemon);
@@ -18,7 +19,7 @@ const PaginationPokemon = ({ postPerPage }) => {
 
   const totalPage = Math.ceil(totalPagePokemon.length / postPerPage);
   const totalPage2 = Math.floor(totalPagePokemon.length / postPerPage);
-
+useEffect(() => {
   if (totalPage <= 9) {
     dispatch(numPageNone(false));
     for (let i = 1; i <= totalPage; i++) {
@@ -30,6 +31,8 @@ const PaginationPokemon = ({ postPerPage }) => {
       pageNumbers.push(i);
     }
   }
+
+}, [])
 
   const prev = (npage) => {
     setNumPage(numPage - 5);

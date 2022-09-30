@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
   
 export const followsSlice = createSlice({
   name: 'follows',
-  initialState: [],
+  initialState: JSON.parse(localStorage.getItem("follows")),
   reducers: {
     setFollows: (state, actions) => {
       const storageArray =  JSON.parse(localStorage.getItem("arrayFollows"))
@@ -16,11 +16,9 @@ export const followsSlice = createSlice({
       }else{
         update.push(actions.payload)
       }
-      console.log(update.length)
-      console.log(update)
       localStorage.setItem("follows", update.length)
       localStorage.setItem("arrayFollows", JSON.stringify(update))
-      return update
+      return update.length
     }
   }
 })
