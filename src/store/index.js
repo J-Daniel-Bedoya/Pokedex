@@ -12,7 +12,6 @@ import isLoadingSlice from "./slices/isLoading.slice";
 import followsSlice from "./slices/follows.slice";
 import darkModeValueSlice from "./slices/darkModeValue.slice";
 import numbersPageSlice from "./slices/numbersPage.slice";
-import followsPokemonSlice from "./slices/followsPokemon.slice";
 
 export default configureStore({
   reducer: {
@@ -29,6 +28,5 @@ export default configureStore({
     follows: followsSlice,
     darKMode: darkModeValueSlice,
     numbersPage: numbersPageSlice,
-    followsPokemon: followsPokemonSlice
 	}
 })

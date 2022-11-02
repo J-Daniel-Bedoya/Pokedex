@@ -11,8 +11,6 @@ import PaginationPokemon from "./PaginationPokemon";
 import PokedexCard from "./PokedexCard";
 import "../../assets/css/PokedexHomeStyles/PokedexMainScreen.css";
 import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
-import Follows from "../follows/Follows";
-import { setFollowsPokemon } from "../../store/slices/followsPokemon.slice";
 
 const PokedexMainScreen = () => {
   const navigate = useNavigate();
