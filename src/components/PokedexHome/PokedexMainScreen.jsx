@@ -9,8 +9,6 @@ import { setNameActual } from "../../store/slices/nameActual.slice";
 import { getSelectTypeThunk } from "../../store/slices/pokemonType.slice";
 import PaginationPokemon from "./PaginationPokemon";
 import PokedexCard from "./PokedexCard";
-import "../../assets/css/PokedexHomeStyles/PokedexMainScreen.css";
-import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 
 const PokedexMainScreen = () => {
   const navigate = useNavigate();

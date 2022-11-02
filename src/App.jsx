@@ -5,8 +5,6 @@ import PokedexSettings from "./components/PokedexSettings/PokedexSettings";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import PokemonInfo from "./components/infoPokemon/PokemonInfo";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
-
-import "./assets/css/App.css";
 import Follows from "./components/follows/Follows";
 
 function App() {

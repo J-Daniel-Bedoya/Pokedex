@@ -5,7 +5,6 @@ import colors from "../../../public/colors.json";
 import types from "../../../public/types.json";
 import { useDispatch } from "react-redux";
 import { setFollows } from "../../store/slices/follows.slice";
-import "../../assets/css/infoPokemonStyles/PokemonInfo.css";
 
 const PokemonInfo = () => {
   const [pokemon, setPokemon] = useState({});

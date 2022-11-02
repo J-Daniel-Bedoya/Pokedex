@@ -5,7 +5,6 @@ import { storageDate } from "../../store/slices/colorStorageDate.slice";
 import { useDispatch } from "react-redux";
 import LoginNewUser from "./login/LoginNewUser";
 import Login from "./login/Login";
-import "../../assets/css/PokedexStartStyles/PokedexStart.css";
 
 const PokedexStart = () => {
   const dispatch = useDispatch();

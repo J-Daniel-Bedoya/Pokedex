@@ -1,4 +1,7 @@
 /* contenido general de card */
+@import url('./seePokemonFollows.css');
+
+
 #follows {
   width: 100%;
   height: 100vh;
@@ -30,15 +33,5 @@
   column-gap: 3rem;
 }
 
-#pokemonFollows {
-  background-color: blue;
-  width: 20rem;
-  height: 25rem;
-  border-radius: 20px;
-}
 
-#pokemonFollows__img {
-  width: 19rem;
-  height: 10rem;
-}
 

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { currentPage } from "../../store/slices/currentPage.slice";
 import { numPageNone } from "../../store/slices/numPageNone.slice";
-import "../../assets/css/PokedexHomeStyles/PaginationPokemon.css";
 import { useEffect } from "react";
 
 const PaginationPokemon = ({ postPerPage }) => {

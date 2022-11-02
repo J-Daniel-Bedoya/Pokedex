@@ -7,7 +7,6 @@ import { setFollows } from "../../store/slices/follows.slice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { pokemonObject } from "../../store/slices/pokemonObject.slice";
-import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
 
 const PokedexCard = ({ url }) => {
   const [followsColor, setFollowsColor] = useState(false);

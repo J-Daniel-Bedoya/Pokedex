@@ -1,0 +1,11 @@
+#pokemonFollows {
+  background-color: blue;
+  width: 20rem;
+  height: 25rem;
+  border-radius: 20px;
+}
+
+#pokemonFollows__img {
+  width: 19rem;
+  height: 10rem;
+}

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { setNameActual } from "../../../store/slices/nameActual.slice";
 import { Button, Form } from "react-bootstrap";
-import "../../../assets/css/loginFormsStyles/LoginNewUser.css";
 
 const LoginNewUser = ({setIsVisibelFormRegister}) => {
   const {register, handleSubmit} = useForm()

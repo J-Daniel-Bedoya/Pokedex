@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
 
+@import url('./PokedexHomeStyles/PaginationPokemon.css');
+@import url('./PokedexHomeStyles/PokedexCard.css');
+@import url('./PokedexHomeStyles/PokedexMainScreen.css');
+@import url('./PokedexStartStyles/PokedexStart.css');
+@import url('./PokedexSettingsStyles/PokedexSettings.css');
+@import url('./loginFormsStyles/LoginExistingUser.css');
+@import url('./loginFormsStyles/LoginNewUser.css');
+@import url('./infoPokemonStyles/PokemonInfo.css');
+@import url('./follows/follows.css');
+@import url('./follows/seePokemonFollows.css');
+
+
 *{
   margin: 0;
   padding: 0;

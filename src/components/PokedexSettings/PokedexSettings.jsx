@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { storageDate } from "../../store/slices/colorStorageDate.slice";
 import { postPerPage } from "../../store/slices/postPerPage.slice";
-import { useEffect } from "react";
-import "../../assets/css/PokedexSettingsStyles/PokedexSettings.css";
 
 const PokedexSettings = () => {
   const navigate = useNavigate();
