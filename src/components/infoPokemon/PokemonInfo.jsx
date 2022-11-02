@@ -140,7 +140,7 @@ const PokemonInfo = () => {
                 <div className="pokemon__type--container-description">
                   <div
                     className={typeComplete()}
-                    style={{ background: colorsFont() }}
+                    style={{ background: colorsFont() }}  
                   >
                     <p className="pokemon__type--descriptions">
                       {pokemon.types?.[0]?.type.name}

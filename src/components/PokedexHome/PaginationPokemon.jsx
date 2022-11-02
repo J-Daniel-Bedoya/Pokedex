@@ -14,7 +14,6 @@ const PaginationPokemon = ({ postPerPage }) => {
   const [number, setNumber] = useState(1);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const totalPage = Math.ceil(totalPagePokemon.length / postPerPage);
   const totalPage2 = Math.floor(totalPagePokemon.length / postPerPage);
@@ -46,10 +45,10 @@ const PaginationPokemon = ({ postPerPage }) => {
     setNumPage2(numPage2 - 5);
     dispatch(currentPage(npage));
     setNumber(number - 5);
-    if (numPage <= 5){
-      setNumPage(1)
-      setNumPage2(9)
-      setNumber(1)
+    if (numPage <= 5) {
+      setNumPage(1);
+      setNumPage2(9);
+      setNumber(1);
       dispatch(currentPage(1));
     }
   };
@@ -64,17 +63,25 @@ const PaginationPokemon = ({ postPerPage }) => {
       dispatch(currentPage(npage));
     }
   };
+
   const dispatchAction = (num) => {
     dispatch(currentPage(num));
     setNumber(num);
-    if (num >= 5) {
-      setNumPage(num - 4);
-      setNumPage2(num + 4);
-    } else {
+    if (totalPage <= 9) {
+      console.log(num);
+      dispatch(currentPage(1));
+      setNumber(1);
       setNumPage(1);
-      setNumPage2(9);
+      setNumPage2(totalPage);
+    } else {
+      if (num >= 5) {
+        setNumPage(num - 4);
+        setNumPage2(num + 4);
+      } else {
+        setNumPage(1);
+        setNumPage2(9);
+      }
     }
-    return num
   };
 
   return (

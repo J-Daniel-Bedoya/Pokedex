@@ -1,0 +1,44 @@
+/* contenido general de card */
+#follows {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+#follows__card--container{
+  margin-top: 5rem;
+  width: 80%;
+  height: fit-content;
+  overflow: auto;
+  outline: 1px solid rgb(188, 186, 246);
+  border-radius: 30px;
+}
+#follows__card--container::-webkit-scrollbar{
+  width: 1px;
+  height: 1px;
+  background-color: #fff;
+}
+#follows__container {
+  width: 70rem;
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3rem;
+}
+
+#pokemonFollows {
+  background-color: blue;
+  width: 20rem;
+  height: 25rem;
+  border-radius: 20px;
+}
+
+#pokemonFollows__img {
+  width: 19rem;
+  height: 10rem;
+}
+

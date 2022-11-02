@@ -7,12 +7,13 @@ import PokemonInfo from "./components/infoPokemon/PokemonInfo";
 import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
 
 import "./assets/css/App.css";
+import Follows from "./components/follows/Follows";
 
 function App() {
   
   return (
     <HashRouter>
-      <div className="App">
+      <div className="App" >
         <Routes>
           <Route path="/" element={<PokedexStart />} />
           <Route path="/settings" element={<PokedexSettings />} />
@@ -20,6 +21,7 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route path="/pokedex" element={<PokedexMainScreen />} />
             <Route path="/pokedex/info_pokemon/:id" element={<PokemonInfo />} />
+            <Route path="/pokedex/follows" element={<Follows />} />
           </Route>
         </Routes>
       </div>

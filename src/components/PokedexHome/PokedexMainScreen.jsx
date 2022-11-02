@@ -11,6 +11,8 @@ import PaginationPokemon from "./PaginationPokemon";
 import PokedexCard from "./PokedexCard";
 import "../../assets/css/PokedexHomeStyles/PokedexMainScreen.css";
 import "../../assets/css/PokedexHomeStyles/PokedexCard.css";
+import Follows from "../follows/Follows";
+import { setFollowsPokemon } from "../../store/slices/followsPokemon.slice";
 
 const PokedexMainScreen = () => {
   const navigate = useNavigate();
@@ -18,7 +20,8 @@ const PokedexMainScreen = () => {
   const storage = useSelector((state) => state.storageColor);
   const currentPageSelect = useSelector((state) => state.currentPage);
   const postPerPageSelect = useSelector((state) => state.postPerPage);
-  const followStorage = useSelector(state => state.follows)
+  const followStorage = useSelector((state) => state.follows);
+  const followStorageLarge = JSON.parse(localStorage.getItem("follows"))
   const pokemon = useSelector((state) => state.pokemon);
   const selectType = useSelector((state) => state.pokemonType);
   const dispatch = useDispatch();
@@ -108,19 +111,24 @@ const PokedexMainScreen = () => {
     indeOfFristPokemon,
     indexOfLastPokemon
   );
-
+  const goFollows = () => {
+    navigate("/pokedex/follows");
+  };
 
   return (
     // contenedor general de main screen
     <div className={storage}>
-      <div className={`PokedexMainScreen`}>
-        <div className="pokemon__follows--main-screen">
-          {followStorage >= 1 ? (
+      <div className={`PokedexMainScreen noneOverflow`}>
+        <div
+          className="pokemon__follows--main-screen"
+          onClick={() => goFollows()}
+        >
+          {followStorageLarge >= 1 ? (
             <i className="fa-solid fa-heart-circle-check"></i>
           ) : (
             <i className="fa-solid fa-heart"></i>
           )}
-          <p>{followStorage >= 1 ? followStorage : 0}</p>
+          <p>{followStorageLarge >= 1 ? followStorage.length : 0}</p>
         </div>
         <div className="main-screen">
           {/* header */}
