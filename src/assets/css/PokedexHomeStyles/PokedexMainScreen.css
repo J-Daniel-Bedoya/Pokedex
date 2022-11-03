@@ -36,11 +36,11 @@
 }
 
 .pokemon__follows--main-screen {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3.3rem;
+  height: 3.3rem;
   position: fixed;
-  top: 10rem;
-  left: 9%;
+  top: 14rem;
+  left: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,8 +48,21 @@
   gap: .6rem;
   font-size: 19px;
   cursor: pointer;
+  box-shadow: 0 0 5px #999797;
+  border-radius: 50%;
+  background-color: var(--bg-inputs);
+  color: var(--color-principal);
+  font-weight: bold;
+  transition: .4s;
 }
+.pokemon__follows--main-screen:hover{
+  background-color: var(--color-principal);
+  color: var(--bg-inputs);
+}
+.pokemon__follows--main-screen:hover .fa-heart-circle-check{
+  text-shadow: 0 0 5px rgb(255, 4, 4);
 
+}
 .pokemon__follows p {
   font-weight: bold;
   color: var(--color-principal);

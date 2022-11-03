@@ -4,8 +4,8 @@ import types from "../../../public/types.json";
 import icons from "../../../public/icons.json";
 import axios from "axios";
 import { setFollows } from "../../store/slices/follows.slice";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { pokemonObject } from "../../store/slices/pokemonObject.slice";
 
 const PokedexCard = ({ url }) => {
@@ -19,7 +19,6 @@ const PokedexCard = ({ url }) => {
       setPokemon(res.data);
       dispatch(pokemonObject(res.data));
     });
-    // console.log(pokemon)
   }, [url]);
 
   const pokemonInfo = (id) => {

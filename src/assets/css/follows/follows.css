@@ -2,28 +2,49 @@
 @import url('./seePokemonFollows.css');
 
 
-#follows {
+.follows {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; 
+  background-color: rgb(56, 4, 128);
 }
-#follows__card--container{
-  margin-top: 5rem;
+.follow__title{
+  color: #fff;
+}
+.follows__card--container{
+  margin-top: 2rem;
   width: 80%;
+  padding: 0 5rem;
   height: fit-content;
   overflow: auto;
-  outline: 1px solid rgb(188, 186, 246);
+  box-shadow: 0 0 10px rgb(121, 62, 238);
   border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d032d;
 }
-#follows__card--container::-webkit-scrollbar{
-  width: 1px;
-  height: 1px;
-  background-color: #fff;
+.follows__card--container button{
+  width: 4rem;
+  height: 3rem;
+  border: none;
+  outline: none;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4814d8;
+  transition: .4s;
 }
-#follows__container {
+.follows__card--container button:hover{
+  background-color: #9179ee;
+  transform: scale(1.07);
+}
+
+.follows__container {
   width: 70rem;
   padding: 2.5rem 0;
   display: flex;
@@ -33,5 +54,26 @@
   column-gap: 3rem;
 }
 
+.fa-circle-xmark{
+  position: absolute;
+  top: 2.5rem;
+  right: 4rem;
+  font-size: 1.7rem;
+  color: #b6a1f9;
+  transition: .4s;
+}
+.fa-circle-xmark:hover{
+  cursor: pointer;
+  color: #fff;
+  transform: scale(1.2);
+  animation: none;
+}
 
-
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 600,
+  'GRAD' 200,
+  'opsz' 48;
+  color: #fff;
+}

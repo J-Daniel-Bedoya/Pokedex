@@ -10,6 +10,7 @@ import { getSelectTypeThunk } from "../../store/slices/pokemonType.slice";
 import PaginationPokemon from "./PaginationPokemon";
 import PokedexCard from "./PokedexCard";
 
+
 const PokedexMainScreen = () => {
   const navigate = useNavigate();
   const nameUser = localStorage.getItem("name");
@@ -180,6 +181,7 @@ const PokedexMainScreen = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };

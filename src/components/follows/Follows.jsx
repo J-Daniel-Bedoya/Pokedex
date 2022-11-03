@@ -25,14 +25,34 @@ const Follows = () => {
   useEffect(() => {
     if (isFalse) {
       if (large <= storageArray?.length){
-        setTimeout(() => {
-          setActual(actual+2)
-          setLarge(large+2)
-        }, 5000)
+        const numPrimo = storageArray.length-1 % 2
+        const solo2 = storageArray.length
+        if(large <= storageArray?.length-2){
+          setTimeout(() => {
+            setActual(actual+2)
+            setLarge(large+2)
+          }, 6000)
+        }else if (solo2 >= 3) {
+          if(numPrimo === 0 ){
+            setTimeout(() => {
+              setActual(actual+2)
+              setLarge(large+2)
+            }, 6000)
+          }else{
+            setTimeout(() => {
+              setActual(actual+1)
+              setLarge(large+1)
+            }, 6000)
+          }
+        }
       }else{
         setActual(0)
         setLarge(2)
       }
+    }else {
+      setTimeout(() => {
+        setIsFalse(true)
+      }, 12000)
     }
 
   }, [actual, large, storageArray])
@@ -49,28 +69,27 @@ const Follows = () => {
   }
   // console.log(actual)
   return (
-    <div id="follows" >
-      <div>
+    <div className="follows" >
+      <div className="follow__title">
         <h1>Your favorite pokemons</h1>
+        <p>Hay <b>{storageArray.length}</b> pokemones seleccionados</p>
       </div>
-      <div id="follows__card--container">
-        <div id="follows__container">
+      <div className="follows__card--container">
+        <button onClick={prev} disabled={actual <= 1}>
+          <span class="material-symbols-outlined">navigate_before</span>
+        </button>
+        <div className="follows__container">
           {pokemon.map((poke) =>
             storeSee?.map((arr) => (
               <>{poke.name === arr && <SeePokemonFollows url={poke.url} />}</>
             ))
           )}
         </div>
+        <button onClick={next} disabled={large === storageArray.length-1}>
+          <span class="material-symbols-outlined">navigate_next</span>
+        </button>
       </div>
-      <button onClick={prev}>prev</button>
-      <button onClick={next}>next</button>
-      {
-        !isFalse && 
-        <button onClick={() => setIsFalse(true)}>Activar automático</button>
-      }
-      <button className="follows__btn" onClick={() => navigate("/pokedex")}>
-        salir
-      </button>
+      <i className="fa-sharp fa-solid fa-circle-xmark" onClick={() => navigate("/pokedex")}></i>
     </div>
   );
 };

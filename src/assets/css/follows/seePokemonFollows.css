@@ -1,11 +1,85 @@
-#pokemonFollows {
-  background-color: blue;
+.pokemonFollows {
   width: 20rem;
   height: 25rem;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 0 4px #6767a7;
+  position: relative;
 }
-
-#pokemonFollows__img {
-  width: 19rem;
-  height: 10rem;
+.pokemonFollows__card{
+  background-color: transparent;
+}
+.pokemonFollows__img {
+  width: 17rem;
+  height: 9rem;
+}
+.pokemonFollows__info{
+  color: #fff;
+  margin-top: 2rem;
+  width: 100%;
+  height: 11rem;
+  border-radius: 10px;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 13px;
+}
+.pokemonFollows__info h4{
+  color: #ffffff;
+  font-weight: bolder;
+}
+.pokemonFollows__info .pokemonFollows__info--text{
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pokemonFollows__info--text .text{
+  width: 7rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.text .text__p{
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.text__p p{
+  margin-bottom: -.1rem;
+  width: fit-content;
+  height: fit-content;
+}
+.pokemonFollows__id{
+  position: absolute;
+  left: -.7rem;
+  color: #fff;
+  padding: 1px 12px 2px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+#card__pokemonFollow{
+  position: absolute;
+  top: -.5rem;
+  right: -1rem;
+}
+#card__pokemonFollow--btn{
+  width: 3rem;
+  height: 3rem;
+  outline: .1px solid rgb(43, 5, 192);
+}
+#b__type{
+  display: inline;
 }
